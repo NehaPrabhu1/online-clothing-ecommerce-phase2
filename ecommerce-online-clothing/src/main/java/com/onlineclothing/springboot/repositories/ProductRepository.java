@@ -1,5 +1,34 @@
 package com.onlineclothing.springboot.repositories;
 
-public class ProductRepository {
+import java.util.List;
 
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
+
+import com.onlineclothing.springboot.entities.Products;
+
+// @Repository is optional for Spring Data JPA Repositories
+@Repository
+@Component
+public interface ProductRepository extends JpaRepository<Products, Integer> {
+
+	// custom queries
+	//ILIKE makes the query case-insensitive
+	@Query(value = "SELECT * FROM products WHERE product_name ILIKE %:productname%", nativeQuery=true)
+	public List<Products> findAllByName(@Param("productname") String productname);
+	
+	@Query(value = "SELECT * from products INNER JOIN categories USING(categoryid) WHERE categories.category_gender = :gender", nativeQuery = true)
+	public List<Products> findAllByGender(@Param("gender") String gender);
+	
+	public List<Products> findByProductname(String productname);
+	//Technically works but the custom query above is more effective as it's case insensitive and includes wildcards
+	//public List<Products> findAllByProductname(String productname);
+	
+	//@Query("SELECT * FROM reviews WHERE productid = ?1")
+	//TODO
+		
+	
 }
