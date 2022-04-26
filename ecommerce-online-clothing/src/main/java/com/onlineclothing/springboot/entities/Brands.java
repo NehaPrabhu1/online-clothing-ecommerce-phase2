@@ -23,50 +23,32 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-@Table(name = "categories", schema="public")
-public class Categories {
+@Table(name = "brands", schema="public")
+public class Brands {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer categoryid;
+    private Integer brandid;
 	
-	private String category_name;
-	private String category_gender;
-	private String category_type;
+	private String brand_name;
 	
 	@JsonBackReference
 	@OneToMany(fetch=FetchType.LAZY)
 	private List<Products> products;
 
-	public Integer getCategoryid() {
-		return categoryid;
+	public Integer getBrandid() {
+		return brandid;
 	}
 
-	public void setCategoryid(Integer categoryid) {
-		this.categoryid = categoryid;
+	public void setBrandid(Integer brandid) {
+		this.brandid = brandid;
 	}
 
-	public String getCategory_name() {
-		return category_name;
+	public String getBrand_name() {
+		return brand_name;
 	}
 
-	public void setCategory_name(String category_name) {
-		this.category_name = category_name;
-	}
-
-	public String getCategory_gender() {
-		return category_gender;
-	}
-
-	public void setCategory_gender(String category_gender) {
-		this.category_gender = category_gender;
-	}
-
-	public String getCategory_type() {
-		return category_type;
-	}
-
-	public void setCategory_type(String category_type) {
-		this.category_type = category_type;
+	public void setBrand_name(String brand_name) {
+		this.brand_name = brand_name;
 	}
 
 	public List<Products> getProducts() {
