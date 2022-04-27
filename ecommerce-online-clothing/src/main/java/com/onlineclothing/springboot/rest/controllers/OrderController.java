@@ -39,7 +39,5 @@ public class OrderController {
 		
 		Orders savedOrder = orderRepository.save(order);
 		return new ResponseEntity<Orders>(savedOrder,HttpStatus.CREATED);
-		
-		
 	}
 }
