@@ -33,9 +33,9 @@ public class Categories {
 	private String category_gender;
 	private String category_type;
 	
-	@JsonBackReference
-	@OneToMany(fetch=FetchType.LAZY)
-	private List<Products> products;
+	//@JsonBackReference
+	//@OneToMany(fetch=FetchType.LAZY)
+	//private List<Products> products;
 
 	public Integer getCategoryid() {
 		return categoryid;
@@ -68,12 +68,12 @@ public class Categories {
 	public void setCategory_type(String category_type) {
 		this.category_type = category_type;
 	}
-
+/*
 	public List<Products> getProducts() {
 		return products;
 	}
 
 	public void setProducts(List<Products> products) {
 		this.products = products;
-	}
+	}*/
 }

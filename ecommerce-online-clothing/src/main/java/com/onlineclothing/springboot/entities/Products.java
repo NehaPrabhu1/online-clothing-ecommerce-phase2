@@ -32,27 +32,25 @@ public class Products {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer productid;
-    
-    @JsonManagedReference// Makes sure there's no infinite loop where the category gets a list of products,
-    // which then contains a list of categories etc.
+
     @ManyToOne
     @JoinColumn(name = "categoryid")
-    private Categories categoryid;
+    private Categories category;
     
-    @JsonManagedReference
     @ManyToOne
     @JoinColumn(name = "brandid")
-    private Brands brandid;
+    private Brands brand;
     
     @Column(name = "product_name", nullable = false)
-    private String productname;
+    private String productName;
     
     @Column(nullable = false)
     private BigDecimal price;
     
     private String color;
     
-    private String product_image;
+    @Column(name = "product_image")
+    private String productImage;
 
 	public Integer getProductid() {
 		return productid;
@@ -62,28 +60,36 @@ public class Products {
 		this.productid = productid;
 	}
 
-	public Categories getCategoryid() {
-		return categoryid;
+	public Categories getCategory() {
+		return category;
 	}
 
-	public void setCategoryid(Categories categoryid) {
-		this.categoryid = categoryid;
+	public void setCategory(Categories category) {
+		this.category = category;
 	}
 
-	public Brands getBrandid() {
-		return brandid;
+	public Brands getBrand() {
+		return brand;
 	}
 
-	public void setBrandid(Brands brandid) {
-		this.brandid = brandid;
+	public void setBrand(Brands brand) {
+		this.brand = brand;
 	}
 
-	public String getProductname() {
-		return productname;
+	public String getProductName() {
+		return productName;
 	}
 
-	public void setProduct_name(String productname) {
-		this.productname = productname;
+	public void setProductName(String productName) {
+		this.productName = productName;
+	}
+
+	public String getProductImage() {
+		return productImage;
+	}
+
+	public void setProductImage(String productImage) {
+		this.productImage = productImage;
 	}
 
 	public BigDecimal getPrice() {
@@ -101,15 +107,4 @@ public class Products {
 	public void setColor(String color) {
 		this.color = color;
 	}
-
-	public String getProduct_image() {
-		return product_image;
-	}
-
-	public void setProduct_image(String product_image) {
-		this.product_image = product_image;
-	}
-    
-    
-    
 }
