@@ -67,7 +67,7 @@ public class ProductController {
 			return new ResponseEntity<List<Products>>(products, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
-
+  
 	@PostMapping("/products")
 	public ResponseEntity<Products> save(@RequestBody Products product) {
 		Products save = productService.save(product);

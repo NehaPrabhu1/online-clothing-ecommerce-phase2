@@ -34,14 +34,30 @@ public class Brands {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer brandid;
 	
-	@Column(name = "brand_name")
+  @Column(name = "brand_name")
 	private String brandName;
-	
-	//@OneToMany(cascade= CascadeType.ALL,fetch = FetchType.EAGER)
+  
+  //@OneToMany(cascade= CascadeType.ALL,fetch = FetchType.EAGER)
 	
 	@OneToMany
 	@JsonIgnore
 	@JoinColumn(name="brandid")
 	private List<Products> products = new ArrayList<Products>();	
 
+
+	public Integer getBrandid() {
+		return brandid;
+	}
+
+	public void setBrandid(Integer brandid) {
+		this.brandid = brandid;
+	}
+
+	public String getBrandName() {
+		return brandName;
+	}
+
+	public void setBrandName(String brand_name) {
+		this.brandName = brand_name;
+	}
 }

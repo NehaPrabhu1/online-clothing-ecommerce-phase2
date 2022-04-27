@@ -32,7 +32,7 @@ public class Categories {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer categoryid;
-	
+		
 	@Column(name="category_gender")
 	private String categoryGender;
 	
@@ -49,4 +49,35 @@ public class Categories {
 	@JoinColumn(name="categoryid")
 	private List<Products> products = new ArrayList<Products>();
 
+  public Integer getCategoryid() {
+		return categoryid;
+	}
+
+	public void setCategoryid(Integer categoryid) {
+		this.categoryid = categoryid;
+	}
+
+	public String getCategoryName() {
+		return categoryName;
+	}
+
+	public void setCategoryName(String category_name) {
+		this.categoryName = category_name;
+	}
+
+	public String getCategoryGender() {
+		return categoryGender;
+	}
+
+	public void setCategoryGender(String category_gender) {
+		this.categoryGender = category_gender;
+	}
+
+	public String getCategoryType() {
+		return categoryType;
+	}
+
+	public void setCategoryType(String category_type) {
+		this.categoryType = category_type;
+	}
 }
