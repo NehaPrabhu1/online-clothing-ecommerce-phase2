@@ -63,5 +63,27 @@ public class ProductService {
 		List<Products> products = productRepository.findAllByGender(gender);
 		return products;
 	}
+	
+	public Products save(Products product) {
+		Products savedProduct = productRepository.save(product);
+		return savedProduct;
+	}
+
+	public void updateProductDiscount() {
+		int count = (int) categoryRepository.count();
+		for (int i = 1; i <= count; i++) {
+			Discount liveDiscount = discountService.getLiveDiscountByCategory(i);
+			List<Products> products = productRepository.findByCategoryid(i);
+			for (Products product : products) {
+				if (liveDiscount != null) {
+					product.setDiscount(liveDiscount.getDiscountPercent());
+					productRepository.save(product);
+				} else {
+					product.setDiscount(0d);
+					productRepository.save(product);
+				}
+			}
+		}
+	}
 
 }

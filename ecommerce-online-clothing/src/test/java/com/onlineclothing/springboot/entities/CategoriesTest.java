@@ -19,24 +19,24 @@ class CategoriesTest {
 	}
 	
 	@Test
-	public void getCategory_nameTest() {
+	public void getCategoryNameTest() {
 		Categories category = new Categories();
-		category.setCategory_name("A");
-		assertEquals("A", category.getCategory_name());
+		category.setCategoryName("A");
+		assertEquals("A", category.getCategoryName());
 	}
 	
 	@Test
-	public void getCategory_genderTest() {
+	public void getCategoryGenderTest() {
 		Categories category = new Categories();
-		category.setCategory_gender("Either");
-		assertEquals("Either", category.getCategory_gender());
+		category.setCategoryGender("Either");
+		assertEquals("Either", category.getCategoryGender());
 	}
 	
 	@Test
-	public void getCategory_typeTest() {
+	public void getCategoryTypeTest() {
 		Categories category = new Categories();
-		category.setCategory_type("Outerwear");
-		assertEquals("Outerwear", category.getCategory_type());
+		category.setCategoryType("Outerwear");
+		assertEquals("Outerwear", category.getCategoryType());
 	}
 
 }

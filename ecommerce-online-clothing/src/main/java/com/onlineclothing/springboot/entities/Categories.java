@@ -29,9 +29,9 @@ public class Categories {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer categoryid;
 	
-	private String category_name;
-	private String category_gender;
-	private String category_type;
+	private String categoryName;
+	private String categoryGender;
+	private String categoryType;
 
 	public Integer getCategoryid() {
 		return categoryid;
@@ -41,27 +41,27 @@ public class Categories {
 		this.categoryid = categoryid;
 	}
 
-	public String getCategory_name() {
-		return category_name;
+	public String getCategoryName() {
+		return categoryName;
 	}
 
-	public void setCategory_name(String category_name) {
-		this.category_name = category_name;
+	public void setCategoryName(String category_name) {
+		this.categoryName = category_name;
 	}
 
-	public String getCategory_gender() {
-		return category_gender;
+	public String getCategoryGender() {
+		return categoryGender;
 	}
 
-	public void setCategory_gender(String category_gender) {
-		this.category_gender = category_gender;
+	public void setCategoryGender(String category_gender) {
+		this.categoryGender = category_gender;
 	}
 
-	public String getCategory_type() {
-		return category_type;
+	public String getCategoryType() {
+		return categoryType;
 	}
 
-	public void setCategory_type(String category_type) {
-		this.category_type = category_type;
+	public void setCategoryType(String category_type) {
+		this.categoryType = category_type;
 	}
 }

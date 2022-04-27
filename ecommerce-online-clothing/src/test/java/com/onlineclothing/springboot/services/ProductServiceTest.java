@@ -69,12 +69,12 @@ public class ProductServiceTest {
 		Categories category = new Categories();
 		
 		brand.setBrandid(1);
-		brand.setBrand_name("ABC");
+		brand.setBrandName("ABC");
 		
 		category.setCategoryid(2);
-		category.setCategory_gender("Men");
-		category.setCategory_type("Topwear");
-		category.setCategory_name("Tshirt");
+		category.setCategoryGender("Men");
+		category.setCategoryType("Topwear");
+		category.setCategoryName("Tshirt");
 		
 		product.setProductid(1);
 		product.setBrand(brand);

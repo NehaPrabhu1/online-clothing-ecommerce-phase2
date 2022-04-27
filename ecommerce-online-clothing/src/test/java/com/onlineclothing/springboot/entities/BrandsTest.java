@@ -19,9 +19,9 @@ public class BrandsTest {
 	}
 	
 	@Test
-	public void getBrand_nameTest() {
+	public void getBrandNameTest() {
 		Brands brand = new Brands();
-		brand.setBrand_name("RTY");
-		assertEquals("RTY", brand.getBrand_name());
+		brand.setBrandName("RTY");
+		assertEquals("RTY", brand.getBrandName());
 	}
 }

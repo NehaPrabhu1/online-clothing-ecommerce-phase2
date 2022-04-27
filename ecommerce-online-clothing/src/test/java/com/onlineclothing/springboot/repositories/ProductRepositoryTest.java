@@ -48,6 +48,12 @@ class ProductRepositoryTest {
 		assertEquals(8, products.size());
 	}
 	
+	@Test
+	public void testFindByCategoryid() {
+		List<Products> products = productRepository.findByCategoryid(2);
+		products.forEach(product -> System.out.println(product));
+	}
+	
 	//TODO: add CRUD tests
 
 }

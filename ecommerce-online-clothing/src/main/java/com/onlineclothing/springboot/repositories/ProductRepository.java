@@ -21,8 +21,11 @@ public interface ProductRepository extends JpaRepository<Products, Integer> {
 	@Query(value = "SELECT * FROM products WHERE product_name ILIKE %:productName%", nativeQuery=true)
 	public List<Products> findAllByName(@Param("productName") String productName);
 	
-	@Query(value = "SELECT * from products INNER JOIN categories USING(categoryid) WHERE categories.category_gender = :gender", nativeQuery = true)
+	@Query(value = "SELECT * FROM products INNER JOIN categories USING(categoryid) WHERE categories.category_gender = :gender", nativeQuery = true)
 	public List<Products> findAllByGender(@Param("gender") String gender);
+	
+	@Query(value = "SELECT * FROM products WHERE categoryid = :id", nativeQuery = true)
+	public List<Products> findByCategoryid(@Param("id") int categoryid);
 	
 	//public List<Products> findByProductName(String productname, Sort sort);
 	

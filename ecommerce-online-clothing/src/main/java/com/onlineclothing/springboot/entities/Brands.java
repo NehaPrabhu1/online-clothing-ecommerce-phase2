@@ -25,7 +25,7 @@ public class Brands {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer brandid;
 	
-	private String brand_name;
+	private String brandName;
 
 	public Integer getBrandid() {
 		return brandid;
@@ -35,11 +35,11 @@ public class Brands {
 		this.brandid = brandid;
 	}
 
-	public String getBrand_name() {
-		return brand_name;
+	public String getBrandName() {
+		return brandName;
 	}
 
-	public void setBrand_name(String brand_name) {
-		this.brand_name = brand_name;
+	public void setBrandName(String brand_name) {
+		this.brandName = brand_name;
 	}
 }
