@@ -16,6 +16,8 @@ import com.onlineclothing.springboot.entities.Products;
 @Component
 public interface ProductRepository extends JpaRepository<Products, Integer> {
 
+	List<Products> findByCategoryid(Integer categoryid);
+	
 	// custom queries
 	//ILIKE makes the query case-insensitive
 	@Query(value = "SELECT * FROM products WHERE product_name ILIKE %:productName%", nativeQuery=true)

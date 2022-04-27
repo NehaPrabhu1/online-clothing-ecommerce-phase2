@@ -11,7 +11,9 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
+import com.onlineclothing.springboot.entities.Discount;
 import com.onlineclothing.springboot.entities.Products;
+import com.onlineclothing.springboot.repositories.CategoryRepository;
 import com.onlineclothing.springboot.repositories.ProductRepository;
 
 
@@ -21,8 +23,15 @@ public class ProductService {
 
 	@Autowired
 	ProductRepository productRepository;
+	
+	@Autowired
+	private DiscountService discountService;
+
+	@Autowired
+	private CategoryRepository categoryRepository;
 
 	public List<Products> getProductsBasedOnPage(int pageNumber, int pageSize) {
+		updateProductDiscount();
 		// query parameters are pgnum and size
 		Pageable pageable = PageRequest.of(pageNumber, pageSize);
 		Page<Products> page = productRepository.findAll(pageable);
@@ -40,16 +49,19 @@ public class ProductService {
 	}
 	
 	public List<Products> getAllProducts(){
+		updateProductDiscount();
 		List<Products> products =  productRepository.findAll();
 		return products;
 	}
 	
 	public List<Products> searchProducts(String query) {
+		updateProductDiscount();
 		List<Products> products = productRepository.findAllByName(query);
 		return products;
 	}
 	
 	public Products getProductById(int productid) {
+		updateProductDiscount();
 		Optional<Products> product = productRepository.findById(productid);
 		if (product.isPresent()) {
 			return product.get();
@@ -60,6 +72,7 @@ public class ProductService {
 	}
 	
 	public List<Products> getProductsByGender(String gender) {
+		updateProductDiscount();
 		List<Products> products = productRepository.findAllByGender(gender);
 		return products;
 	}

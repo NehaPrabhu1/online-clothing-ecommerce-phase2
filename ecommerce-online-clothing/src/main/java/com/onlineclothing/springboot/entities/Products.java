@@ -1,8 +1,5 @@
 package com.onlineclothing.springboot.entities;
 
-import java.math.BigDecimal;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -11,11 +8,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.Table;
 
-import org.springframework.data.jpa.repository.Modifying;
-
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -24,39 +18,41 @@ import lombok.Setter;
 import lombok.ToString;
 
 @Entity
-@NoArgsConstructor
+@Getter
+@Setter
 @AllArgsConstructor
+@NoArgsConstructor
 @ToString
-@Table(name = "products", schema="public")
 public class Products {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer productid;
+  
+  @ManyToOne
+	@JoinColumn(name="brandid",insertable = false, updatable = false)
+	private Brands brand;
+	
+	@ManyToOne
+	@JoinColumn(name="categoryid",insertable = false, updatable = false)
+	private Categories category;
+    
+  @Column(name = "product_name", nullable = false)
+  private String productName;
+    
+  @Column(nullable = false)
+  private Integer price;
+    
+  private String color;
+    
+  private Integer discount;
+    
+  @Column(name = "product_image")
+  private String productImage;
 
-    @ManyToOne
-    @JoinColumn(name = "categoryid")
-    private Categories category;
-    
-    @ManyToOne
-    @JoinColumn(name = "brandid")
-    private Brands brand;
-    
-    @Column(name = "product_name", nullable = false)
-    private String productName;
-    
-    @Column(nullable = false)
-    private Integer price;
-    
-    private String color;
-    
-    private Integer discount;
-    
-    @Column(name = "product_image")
-    private String productImage;
-
-	public Integer getProductid() {
-		return productid;
-	}
+  public Integer getProductid() {
+    return productid;
+  }
 
 	public void setProductid(Integer productid) {
 		this.productid = productid;
@@ -117,4 +113,5 @@ public class Products {
 	public void setDiscount(Integer discount) {
 		this.discount = discount;
 	}
+}
 }

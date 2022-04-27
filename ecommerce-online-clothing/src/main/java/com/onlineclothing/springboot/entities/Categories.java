@@ -1,7 +1,10 @@
 package com.onlineclothing.springboot.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -9,9 +12,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
-import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -20,20 +22,34 @@ import lombok.Setter;
 import lombok.ToString;
 
 @Entity
-@NoArgsConstructor
+@Getter
+@Setter
 @AllArgsConstructor
+@NoArgsConstructor
 @ToString
-@Table(name = "categories", schema="public")
 public class Categories {
-	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer categoryid;
 	
-	private String categoryName;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer categoryid;
+		
+	@Column(name="category_gender")
 	private String categoryGender;
+	
+	@Column(name="category_type")
 	private String categoryType;
+	
+	@Column(name = "category_name")
+	private String categoryName;
+	
+	//@OneToMany(cascade= CascadeType.ALL,fetch = FetchType.EAGER)
+	
+	@OneToMany
+	@JsonIgnore
+	@JoinColumn(name="categoryid")
+	private List<Products> products = new ArrayList<Products>();
 
-	public Integer getCategoryid() {
+  public Integer getCategoryid() {
 		return categoryid;
 	}
 
