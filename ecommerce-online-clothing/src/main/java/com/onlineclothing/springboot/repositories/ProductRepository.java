@@ -2,6 +2,7 @@ package com.onlineclothing.springboot.repositories;
 
 import java.util.List;
 
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -17,15 +18,13 @@ public interface ProductRepository extends JpaRepository<Products, Integer> {
 
 	// custom queries
 	//ILIKE makes the query case-insensitive
-	@Query(value = "SELECT * FROM products WHERE product_name ILIKE %:productname%", nativeQuery=true)
-	public List<Products> findAllByName(@Param("productname") String productname);
+	@Query(value = "SELECT * FROM products WHERE product_name ILIKE %:productName%", nativeQuery=true)
+	public List<Products> findAllByName(@Param("productName") String productName);
 	
 	@Query(value = "SELECT * from products INNER JOIN categories USING(categoryid) WHERE categories.category_gender = :gender", nativeQuery = true)
 	public List<Products> findAllByGender(@Param("gender") String gender);
 	
-	public List<Products> findByProductname(String productname);
-	//Technically works but the custom query above is more effective as it's case insensitive and includes wildcards
-	//public List<Products> findAllByProductname(String productname);
+	//public List<Products> findByProductName(String productname, Sort sort);
 	
 	//@Query("SELECT * FROM reviews WHERE productid = ?1")
 	//TODO
