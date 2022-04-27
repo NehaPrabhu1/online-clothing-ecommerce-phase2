@@ -45,9 +45,11 @@ public class Products {
     private String productName;
     
     @Column(nullable = false)
-    private BigDecimal price;
+    private Integer price;
     
     private String color;
+    
+    private Integer discount;
     
     @Column(name = "product_image")
     private String productImage;
@@ -92,11 +94,11 @@ public class Products {
 		this.productImage = productImage;
 	}
 
-	public BigDecimal getPrice() {
+	public int getPrice() {
 		return price;
 	}
 
-	public void setPrice(BigDecimal price) {
+	public void setPrice(int price) {
 		this.price = price;
 	}
 
@@ -106,5 +108,13 @@ public class Products {
 
 	public void setColor(String color) {
 		this.color = color;
+	}
+
+	public Integer getDiscount() {
+		return discount;
+	}
+
+	public void setDiscount(Integer discount) {
+		this.discount = discount;
 	}
 }

@@ -29,7 +29,7 @@ public class ProductService {
 		// May comment the above lines out so it can be more generic,
 		// e.g. we can get a Page object that only contains search query results
 		int totalPages = page.getTotalPages();
-		if (totalPages <= pageNumber) {
+		while (totalPages <= pageNumber) {
 			pageNumber = totalPages - 1;
 		}
 		pageable = PageRequest.of(pageNumber, pageSize);
