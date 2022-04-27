@@ -1,8 +1,5 @@
 package com.onlineclothing.springboot.entities;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,10 +8,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.persistence.Transient;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -28,20 +28,42 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class Brands {
-	
+public class Orderline {
+
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer brandid;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "orderlineid")
+	private Integer orderlineid;
+
+	private Integer productid;
 	
-	@Column(name = "brand_name")
-	private String brandName;
+	@ManyToOne
+    @JoinColumn(name = "productid",insertable = false, updatable = false)
+    private Products product;
+
+
+	private String size;
+
+	private int quantity;
+
+	private double price;
+
+//	@ManyToOne(cascade = CascadeType.ALL)
+//	@JoinColumn(name = "orderid")
+//	@JsonIgnore
+//	private Orders orderPlaced;
+
 	
-	//@OneToMany(cascade= CascadeType.ALL,fetch = FetchType.EAGER)
 	
-	@OneToMany
-	@JsonIgnore
-	@JoinColumn(name="brandid")
-	private List<Products> products = new ArrayList<Products>();	
 
 }
+
+
+
+
+
+
+
+
+
+

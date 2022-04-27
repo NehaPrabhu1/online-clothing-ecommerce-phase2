@@ -10,11 +10,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
-
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -28,20 +24,25 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class Brands {
+public class Users {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer brandid;
+	@Column(name="userid")
+	private Integer userid;
 	
-	@Column(name = "brand_name")
-	private String brandName;
+	@Column(name="user_email")
+	private String email;
 	
-	//@OneToMany(cascade= CascadeType.ALL,fetch = FetchType.EAGER)
+	@Column(name="first_name")
+	private String firstName;
 	
-	@OneToMany
-	@JsonIgnore
-	@JoinColumn(name="brandid")
-	private List<Products> products = new ArrayList<Products>();	
+	@Column(name = "last_name")
+	private String lastName;
+	
+	@Column(name="user_role")
+	private String role;
 
+//	@OneToMany(cascade= CascadeType.ALL, mappedBy = "user", fetch = FetchType.EAGER)
+//	private List<Orders> orders = new ArrayList<Orders>();
 }
