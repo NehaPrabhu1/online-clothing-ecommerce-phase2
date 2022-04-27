@@ -30,5 +30,11 @@ class ProductRepositoryTest {
 		assertEquals(16, products.size());
 		
 	}
+	
+	@Test
+	public void testFindByCategoryid() {
+		List<Products> products = productRepository.findByCategoryid(2);
+		products.forEach(product -> System.out.println(product));
+	}
 
 }
