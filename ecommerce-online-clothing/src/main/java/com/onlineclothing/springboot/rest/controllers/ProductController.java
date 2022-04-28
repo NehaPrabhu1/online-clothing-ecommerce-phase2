@@ -83,4 +83,10 @@ public class ProductController {
 		}
 		return new ResponseEntity<List<Products>>(HttpStatus.INTERNAL_SERVER_ERROR);
 	}
+	
+	// Path: http://localhost:8080/api/v1/products/count
+	@GetMapping("/products/count")
+    public long getCount() {
+    	return productService.getProductsCount();
+    }
 }

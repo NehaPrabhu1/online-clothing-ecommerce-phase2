@@ -26,5 +26,9 @@ public class CategoryService {
 		}
 		return products;
 	}
+	
+	public long getCategoriesCount() {
+    	return categoryRepository.count();
+    }
 
 }

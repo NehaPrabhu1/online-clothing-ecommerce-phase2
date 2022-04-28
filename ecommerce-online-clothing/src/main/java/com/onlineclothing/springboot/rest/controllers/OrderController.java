@@ -75,5 +75,8 @@ public class OrderController {
 		return new ResponseEntity<List<Orders>>(HttpStatus.BAD_REQUEST);
 	}
 	
-	
+	@GetMapping("/orders/count")
+    public long getCount() {
+    	return orderService.getOrdersCount();
+    }
 }

@@ -39,4 +39,9 @@ public class CategoryController {
 			return new ResponseEntity<List<Products>>(products,HttpStatus.OK);
 		return new ResponseEntity<List<Products>>(HttpStatus.BAD_REQUEST);
 	}
+	
+	 @GetMapping("/categories/count")
+	    public long getCount() {
+	    	return categoryService.getCategoriesCount();
+	    }
 }

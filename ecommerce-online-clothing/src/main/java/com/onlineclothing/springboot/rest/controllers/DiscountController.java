@@ -46,5 +46,10 @@ public class DiscountController {
 		}
 		return new ResponseEntity<Discount>(liveDiscountByCategory,HttpStatus.CREATED);
 	}
+	
+	@GetMapping("/discount/count")
+    public long getCount() {
+    	return discountService.getDiscountCount();
+    }
  
 }

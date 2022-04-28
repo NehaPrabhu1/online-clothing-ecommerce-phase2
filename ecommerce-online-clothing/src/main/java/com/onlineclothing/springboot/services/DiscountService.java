@@ -69,5 +69,9 @@ public class DiscountService {
 		updateDiscount();
 		return discountRepository.findTop1ByCategoryIdAndStatusOrderByDiscountPercentDesc(categoryid,"live");
 	}
+	
+	public long getDiscountCount() {
+		return discountRepository.count();
+	}
 
 }

@@ -27,5 +27,9 @@ public class BrandService {
 		}
 		return products;
 	}
+	
+	public long getBrandsCount() {
+    	return brandRepository.count();
+    }
 
 }
