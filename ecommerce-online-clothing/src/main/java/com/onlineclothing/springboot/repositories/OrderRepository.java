@@ -13,5 +13,7 @@ import com.onlineclothing.springboot.entities.Orders;
 @Repository
 public interface OrderRepository extends JpaRepository<Orders, Integer>{
 	
-	List<Orders> findByUserid(Integer userid, Pageable pageable);
+	Page<Orders> findByUserid(Integer userid, Pageable pageable);
+	
+	List<Orders> findByUserid(Integer userid);
 }

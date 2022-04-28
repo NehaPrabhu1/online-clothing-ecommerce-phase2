@@ -98,5 +98,12 @@ public class ProductService {
 			}
 		}
 	}
+	
+	//wrote this method to select a product by color
+	public List<Products> getProductsByColor(String color){
+		updateProductDiscount();
+		List<Products> products = productRepository.findByColor(color);
+		return products;
+	}
 
 }

@@ -35,7 +35,7 @@ public class CategoryController {
 	@GetMapping("/categories/{id}")
 	public ResponseEntity<List<Products>> getAllProductsByCategory(@PathVariable("id") Integer id){
 		List<Products> products = categoryService.getProductsByCategory(id);
-		if(products!=null)
+		if(!products.isEmpty())
 			return new ResponseEntity<List<Products>>(products,HttpStatus.OK);
 		return new ResponseEntity<List<Products>>(HttpStatus.BAD_REQUEST);
 	}

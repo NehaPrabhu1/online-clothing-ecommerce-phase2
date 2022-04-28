@@ -18,6 +18,8 @@ public interface ProductRepository extends JpaRepository<Products, Integer> {
 
 	List<Products> findByCategoryid(Integer categoryid);
 	
+	List<Products> findByColor(String color);
+	
 	// custom queries
 	//ILIKE makes the query case-insensitive
 	@Query(value = "SELECT * FROM products WHERE product_name ILIKE %:productName%", nativeQuery=true)

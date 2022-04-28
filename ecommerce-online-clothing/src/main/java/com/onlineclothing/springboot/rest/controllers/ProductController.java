@@ -73,4 +73,14 @@ public class ProductController {
 		Products save = productService.save(product);
 		return new ResponseEntity<Products>(save, HttpStatus.CREATED);
 	}
+	
+	//http://localhost:8080/api/v1/products/color?q=blue
+	@GetMapping("/products/color")
+	public ResponseEntity<List<Products>> getProductsByColor(@RequestParam("q") String color){
+		List<Products> products = productService.getProductsByColor(color);
+		if(!products.isEmpty()) {
+			return new ResponseEntity<List<Products>>(products, HttpStatus.OK);
+		}
+		return new ResponseEntity<List<Products>>(HttpStatus.INTERNAL_SERVER_ERROR);
+	}
 }

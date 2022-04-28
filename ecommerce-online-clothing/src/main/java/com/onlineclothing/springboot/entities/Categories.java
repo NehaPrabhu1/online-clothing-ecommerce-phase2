@@ -26,30 +26,30 @@ import lombok.ToString;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
+//@ToString
 public class Categories {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer categoryid;
-		
-	@Column(name="category_gender")
+
+	@Column(name = "category_gender")
 	private String categoryGender;
-	
-	@Column(name="category_type")
+
+	@Column(name = "category_type")
 	private String categoryType;
-	
+
 	@Column(name = "category_name")
 	private String categoryName;
-	
-	//@OneToMany(cascade= CascadeType.ALL,fetch = FetchType.EAGER)
-	
-	@OneToMany
+
+	// @OneToMany(cascade= CascadeType.ALL,fetch = FetchType.EAGER)
+
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JsonIgnore
-	@JoinColumn(name="categoryid")
+	@JoinColumn(name = "categoryid")
 	private List<Products> products = new ArrayList<Products>();
 
-  public Integer getCategoryid() {
+	public Integer getCategoryid() {
 		return categoryid;
 	}
 
@@ -80,4 +80,13 @@ public class Categories {
 	public void setCategoryType(String category_type) {
 		this.categoryType = category_type;
 	}
+
+	//this does not affect the json object
+	@Override
+	public String toString() {
+		return "Categories [categoryid=" + categoryid + ", categoryGender=" + categoryGender + ", categoryType="
+				+ categoryType + ", categoryName=" + categoryName + "]";
+	}
+	
+	
 }

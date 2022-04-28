@@ -36,7 +36,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @Getter
 @Setter
-@ToString
+//@ToString
 public class Orders {
 	
 	@Id
@@ -63,7 +63,12 @@ public class Orders {
     @OneToOne(cascade= CascadeType.ALL)
     @PrimaryKeyJoinColumn(name="addressid", referencedColumnName = "addressid")
     private DeliveryAddress deliveryAddress;
+
+	@Override
+	public String toString() {
+		return "Orders [orderid=" + orderid + ", userid=" + userid + ", dateOfOrder=" + dateOfOrder + ", timeOfOrder="
+				+ timeOfOrder + ", totalPayment=" + totalPayment + "]";
+	}
        
     
-
 }

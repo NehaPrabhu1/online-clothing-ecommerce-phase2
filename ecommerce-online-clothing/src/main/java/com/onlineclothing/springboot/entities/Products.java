@@ -12,47 +12,48 @@ import javax.persistence.ManyToOne;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
 @Entity
-@Getter
-@Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
+//@ToString - created new toString() below - does not affect the code
 public class Products {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer productid;
-  
-  @ManyToOne
-	@JoinColumn(name="brandid",insertable = false, updatable = false)
-	private Brands brand;
-	
-	@ManyToOne
-	@JoinColumn(name="categoryid",insertable = false, updatable = false)
-	private Categories category;
-    
-  @Column(name = "product_name", nullable = false)
-  private String productName;
-    
-  @Column(nullable = false)
-  private Integer price;
-    
-  private String color;
-    
-  private Integer discount;
-    
-  @Column(name = "product_image")
-  private String productImage;
 
-  public Integer getProductid() {
-    return productid;
-  }
+	@ManyToOne
+	@JoinColumn(name = "brandid", insertable = false, updatable = false)
+	private Brands brand;
+
+	@ManyToOne
+	@JoinColumn(name = "categoryid", insertable = false, updatable = false)
+	private Categories category;
+	
+	private Integer categoryid;//do not delete imp for inserting new products, created getter and setter
+	
+	private Integer brandid;//do not delete imp for inserting new products, created getter and setter
+
+	@Column(name = "product_name", nullable = false)
+	private String productName;
+
+	@Column(nullable = false)
+	private double price;
+
+	private String color;
+
+	private double discount;
+
+	@Column(name = "product_image")
+	private String productImage;
+
+	public Integer getProductid() {
+		return productid;
+	}
 
 	public void setProductid(Integer productid) {
 		this.productid = productid;
@@ -90,11 +91,11 @@ public class Products {
 		this.productImage = productImage;
 	}
 
-	public int getPrice() {
+	public double getPrice() {
 		return price;
 	}
 
-	public void setPrice(int price) {
+	public void setPrice(double price) {
 		this.price = price;
 	}
 
@@ -106,12 +107,37 @@ public class Products {
 		this.color = color;
 	}
 
-	public Integer getDiscount() {
+	public double getDiscount() {
 		return discount;
 	}
 
-	public void setDiscount(Integer discount) {
+	public void setDiscount(double discount) {
 		this.discount = discount;
 	}
-}
+
+	public Integer getCategoryid() {
+		return categoryid;
+	}
+
+	public void setCategoryid(Integer categoryid) {
+		this.categoryid = categoryid;
+	}
+
+	public Integer getBrandid() {
+		return brandid;
+	}
+
+	public void setBrandid(Integer brandid) {
+		this.brandid = brandid;
+	}
+
+	//toString() does not affect the json object created - used only to display object in sysout (needed for testing)
+	@Override
+	public String toString() {
+		return "Products [productid=" + productid + ", categoryid=" + categoryid + ", brandid=" + brandid
+				+ ", productName=" + productName + ", price=" + price + ", color=" + color + ", discount=" + discount
+				+ ", productImage=" + productImage + "]";
+	}
+	
+	
 }

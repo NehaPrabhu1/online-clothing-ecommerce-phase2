@@ -35,7 +35,7 @@ public class BrandController {
 	@GetMapping("/brands/{id}")
 	public ResponseEntity<List<Products>> getProductsByBrand(@PathVariable("id") Integer brandid){
 		List<Products> products = brandService.getProductsByBrand(brandid);
-		if(products != null) {
+		if(!products.isEmpty()) {
 			return new ResponseEntity<List<Products>>(products,HttpStatus.OK);
 		}
 		return new ResponseEntity<List<Products>>(HttpStatus.BAD_REQUEST);

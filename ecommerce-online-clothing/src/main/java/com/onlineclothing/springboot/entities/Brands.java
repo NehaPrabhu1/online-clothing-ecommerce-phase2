@@ -27,7 +27,7 @@ import lombok.ToString;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
+//@ToString
 public class Brands {
 	
 	@Id
@@ -39,7 +39,7 @@ public class Brands {
   
   //@OneToMany(cascade= CascadeType.ALL,fetch = FetchType.EAGER)
 	
-	@OneToMany
+	@OneToMany(cascade= CascadeType.ALL,fetch = FetchType.EAGER)
 	@JsonIgnore
 	@JoinColumn(name="brandid")
 	private List<Products> products = new ArrayList<Products>();	
@@ -60,4 +60,11 @@ public class Brands {
 	public void setBrandName(String brand_name) {
 		this.brandName = brand_name;
 	}
+
+	@Override
+	public String toString() {
+		return "Brands [brandid=" + brandid + ", brandName=" + brandName + "]";
+	}
+	
+	
 }
