@@ -29,7 +29,7 @@ public class Discount {
 	private Integer discountid;
 
 	@Column(name="categoryid")
-	private Integer categoryid; //dropdown <option [value] = category.id>{{category.name}}</option>
+	private Integer categoryid; //changed from categoryId to categoryid to match with the database
 
 	@Column(name="start_date")
 	private LocalDate startDate;//date
@@ -47,6 +47,7 @@ public class Discount {
 	private double discountPercent;//number/normal
 	
 	private String status;
+	
 
 	public Integer getDiscountid() {
 		return discountid;
