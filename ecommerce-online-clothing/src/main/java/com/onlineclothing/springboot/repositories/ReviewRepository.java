@@ -5,7 +5,6 @@ import org.springframework.stereotype.Repository;
 
 import com.onlineclothing.springboot.entities.Reviews;
 
-
 @Repository
 public interface ReviewRepository extends JpaRepository<Reviews, Integer> {
 

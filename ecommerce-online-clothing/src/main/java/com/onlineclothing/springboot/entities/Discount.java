@@ -16,8 +16,8 @@ import lombok.Setter;
 import lombok.ToString;
 
 @Entity
-@Getter
-@Setter
+//@Getter
+//@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
@@ -26,10 +26,10 @@ public class Discount {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "discountid")
-	private Integer id;
+	private Integer discountid;
 
 	@Column(name="categoryid")
-	private Integer categoryId; //dropdown <option [value] = category.id>{{category.name}}</option>
+	private Integer categoryid; //dropdown <option [value] = category.id>{{category.name}}</option>
 
 	@Column(name="start_date")
 	private LocalDate startDate;//date
@@ -47,5 +47,69 @@ public class Discount {
 	private double discountPercent;//number/normal
 	
 	private String status;
+
+	public Integer getDiscountid() {
+		return discountid;
+	}
+
+	public void setDiscountid(Integer discountid) {
+		this.discountid = discountid;
+	}
+
+	public Integer getCategoryid() {
+		return categoryid;
+	}
+
+	public void setCategoryid(Integer categoryid) {
+		this.categoryid = categoryid;
+	}
+
+	public LocalDate getStartDate() {
+		return startDate;
+	}
+
+	public void setStartDate(LocalDate startDate) {
+		this.startDate = startDate;
+	}
+
+	public LocalTime getStartTime() {
+		return startTime;
+	}
+
+	public void setStartTime(LocalTime startTime) {
+		this.startTime = startTime;
+	}
+
+	public LocalDate getEndDate() {
+		return endDate;
+	}
+
+	public void setEndDate(LocalDate endDate) {
+		this.endDate = endDate;
+	}
+
+	public LocalTime getEndTime() {
+		return endTime;
+	}
+
+	public void setEndTime(LocalTime endTime) {
+		this.endTime = endTime;
+	}
+
+	public double getDiscountPercent() {
+		return discountPercent;
+	}
+
+	public void setDiscountPercent(double discountPercent) {
+		this.discountPercent = discountPercent;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
 
 }

@@ -19,7 +19,7 @@ class BrandServiceTest {
 	@Test
 	void testGetProductsByBrand() {
 		int id = 1;
-		List<Products> products = brandService.getProductsByBrand(id);
+		List<Products> products = brandService.findProductsByBrand(id);
 		products.forEach(product->System.out.println(product));
 	}
 

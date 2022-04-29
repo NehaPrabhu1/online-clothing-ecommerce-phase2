@@ -11,8 +11,8 @@ import com.onlineclothing.springboot.entities.Discount;
 @Repository
 public interface DiscountRepository extends JpaRepository<Discount, Integer>{
 	
-	List<Discount> findByCategoryId(Integer categoryid);
+	List<Discount> findByCategoryid(Integer categoryid);
 	
-	Discount findTop1ByCategoryIdAndStatusOrderByDiscountPercentDesc(Integer categoryid, String status);
+	Discount findTop1ByCategoryidAndStatusOrderByDiscountPercentDesc(Integer categoryid, String status);
 //category -> Discount
 }

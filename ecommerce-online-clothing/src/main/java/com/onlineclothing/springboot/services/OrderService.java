@@ -68,7 +68,8 @@ public class OrderService {
 		}
 
 		pageable = PageRequest.of(pageNo, size,
-				Sort.by(new Sort.Order(Direction.DESC, "dateOfOrder"), new Sort.Order(Direction.DESC, "timeOfOrder")));
+				Sort.by(new Sort.Order(Direction.DESC, "dateOfOrder"), 
+						new Sort.Order(Direction.DESC, "timeOfOrder")));
 		page = orderRepository.findByUserid(userid, pageable);
 		if (page.hasContent()) {
 			orders = page.getContent();

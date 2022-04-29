@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.onlineclothing.springboot.entities.Discount;
 import com.onlineclothing.springboot.services.DiscountService;
 
-
 @RestController
 @RequestMapping("/api/v1")
 public class DiscountController {

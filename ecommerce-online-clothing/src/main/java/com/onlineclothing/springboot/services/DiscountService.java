@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 import com.onlineclothing.springboot.entities.Discount;
 import com.onlineclothing.springboot.repositories.DiscountRepository;
 
-
 @Service
 public class DiscountService {
 
@@ -26,8 +25,9 @@ public class DiscountService {
 		LocalTime endTime = discount.getEndTime();
 
 		/**
-		 * 			start ------------------------------------------ end 
-		 * now 							now 								now
+		 * 			     start ----------------------------------------- end 
+		 * now(isBefore)				   now 			         		      (isAfter)now
+		 * 	Condition-1				    Condition-2					      	   Condition-3
 		 */
 		LocalDateTime startTimeStamp = LocalDateTime.of(startDate, startTime);
 		LocalDateTime endTimeStamp = LocalDateTime.of(endDate, endTime);
@@ -62,12 +62,12 @@ public class DiscountService {
 
 	public List<Discount> getDiscountByCategory(Integer categoryid) {
 		updateDiscount();
-		return discountRepository.findByCategoryId(categoryid);
+		return discountRepository.findByCategoryid(categoryid);
 	}
 	
 	public Discount getLiveDiscountByCategory(Integer categoryid) {
 		updateDiscount();
-		return discountRepository.findTop1ByCategoryIdAndStatusOrderByDiscountPercentDesc(categoryid,"live");
+		return discountRepository.findTop1ByCategoryidAndStatusOrderByDiscountPercentDesc(categoryid,"live");
 	}
 	
 	public long getDiscountCount() {

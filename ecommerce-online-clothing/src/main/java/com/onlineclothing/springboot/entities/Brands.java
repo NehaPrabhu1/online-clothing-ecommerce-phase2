@@ -23,27 +23,25 @@ import lombok.Setter;
 import lombok.ToString;
 
 @Entity
-@Getter
-@Setter
+//@Getter
+//@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 //@ToString
 public class Brands {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer brandid;
-	
-  @Column(name = "brand_name")
-	private String brandName;
-  
-  //@OneToMany(cascade= CascadeType.ALL,fetch = FetchType.EAGER)
-	
-	@OneToMany(cascade= CascadeType.ALL,fetch = FetchType.EAGER)
-	@JsonIgnore
-	@JoinColumn(name="brandid")
-	private List<Products> products = new ArrayList<Products>();	
 
+	@Column(name = "brand_name")
+	private String brandName;
+
+
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JsonIgnore
+	@JoinColumn(name = "brandid")
+	private List<Products> products = new ArrayList<Products>();
 
 	public Integer getBrandid() {
 		return brandid;
@@ -60,11 +58,19 @@ public class Brands {
 	public void setBrandName(String brand_name) {
 		this.brandName = brand_name;
 	}
+	
+	public List<Products> getProducts() {
+		return products;
+	}
+
+	public void setProducts(List<Products> products) {
+		this.products = products;
+	}
 
 	@Override
 	public String toString() {
 		return "Brands [brandid=" + brandid + ", brandName=" + brandName + "]";
 	}
-	
-	
+
+
 }

@@ -5,7 +5,6 @@ import org.springframework.stereotype.Repository;
 
 import com.onlineclothing.springboot.entities.DeliveryAddress;
 
-
 @Repository
 public interface DeliveryAddressRepository extends JpaRepository<DeliveryAddress, Integer>{
 

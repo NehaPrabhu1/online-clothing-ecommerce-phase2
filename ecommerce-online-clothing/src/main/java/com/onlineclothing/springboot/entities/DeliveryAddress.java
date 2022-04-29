@@ -25,8 +25,8 @@ import lombok.ToString;
 
 @Entity
 @Table(name="deliveryaddress")
-@Getter
-@Setter
+//@Getter
+//@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
@@ -41,20 +41,35 @@ public class DeliveryAddress {
 	private String city;
 	private String country;
 	private String pincode;
+	public Integer getAddressid() {
+		return addressid;
+	}
+	public void setAddressid(Integer addressid) {
+		this.addressid = addressid;
+	}
+	public String getAddressline() {
+		return addressline;
+	}
+	public void setAddressline(String addressline) {
+		this.addressline = addressline;
+	}
+	public String getCity() {
+		return city;
+	}
+	public void setCity(String city) {
+		this.city = city;
+	}
+	public String getCountry() {
+		return country;
+	}
+	public void setCountry(String country) {
+		this.country = country;
+	}
+	public String getPincode() {
+		return pincode;
+	}
+	public void setPincode(String pincode) {
+		this.pincode = pincode;
+	}
 	
-	
-//	@OneToOne(cascade = CascadeType.ALL, optional = false)
-//	@JoinColumn(name = "orderid",referencedColumnName = "orderid")
-//	@MapsId
-//	@JsonIgnore //don't want to be retrieved
-//	private Orders order;
-
-
-	
-	
-	
-
-
-	
-
 }

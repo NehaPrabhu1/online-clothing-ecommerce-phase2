@@ -5,7 +5,6 @@ import org.springframework.stereotype.Repository;
 
 import com.onlineclothing.springboot.entities.Users;
 
-
 @Repository
 public interface UserRepository extends JpaRepository<Users, Integer>{
 	

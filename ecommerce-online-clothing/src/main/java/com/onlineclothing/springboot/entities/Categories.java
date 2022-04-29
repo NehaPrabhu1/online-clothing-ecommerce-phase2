@@ -22,8 +22,8 @@ import lombok.Setter;
 import lombok.ToString;
 
 @Entity
-@Getter
-@Setter
+//@Getter
+//@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 //@ToString
@@ -80,6 +80,14 @@ public class Categories {
 	public void setCategoryType(String category_type) {
 		this.categoryType = category_type;
 	}
+	
+	public List<Products> getProducts() {
+		return products;
+	}
+
+	public void setProducts(List<Products> products) {
+		this.products = products;
+	}
 
 	//this does not affect the json object
 	@Override
@@ -87,6 +95,8 @@ public class Categories {
 		return "Categories [categoryid=" + categoryid + ", categoryGender=" + categoryGender + ", categoryType="
 				+ categoryType + ", categoryName=" + categoryName + "]";
 	}
+
+	
 	
 	
 }

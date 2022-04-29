@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.onlineclothing.springboot.entities.Orders;
 import com.onlineclothing.springboot.services.OrderService;
 
-
 @RestController
 @RequestMapping("/api/v1")
 public class OrderController {

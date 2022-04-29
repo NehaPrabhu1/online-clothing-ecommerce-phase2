@@ -34,41 +34,96 @@ import lombok.ToString;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter
-@Setter
+//@Getter
+//@Setter
 //@ToString
 public class Orders {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer orderid;
-	
+
 	private Integer userid;
-	
+
 	@CreationTimestamp
 	@Column(name = "date_of_order")
 	private LocalDate dateOfOrder;
-	
+
 	@CreationTimestamp
 	@Column(name = "time_of_order")
 	private LocalTime timeOfOrder;
-	
+
 	@Column(name = "total_payment")
 	private double totalPayment;
-	
-	@OneToMany(cascade= CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinColumn(name="orderid",referencedColumnName = "orderid")
-	private Set<Orderline> orderlines = new HashSet<Orderline>();
-	
-    @OneToOne(cascade= CascadeType.ALL)
-    @PrimaryKeyJoinColumn(name="addressid", referencedColumnName = "addressid")
-    private DeliveryAddress deliveryAddress;
 
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name = "orderid", referencedColumnName = "orderid")
+	private Set<Orderline> orderlines = new HashSet<Orderline>();
+
+	@OneToOne(cascade = CascadeType.ALL)
+	@PrimaryKeyJoinColumn(name = "addressid", referencedColumnName = "addressid")
+	private DeliveryAddress deliveryAddress;
+
+	public Integer getOrderid() {
+		return orderid;
+	}
+
+	public void setOrderid(Integer orderid) {
+		this.orderid = orderid;
+	}
+
+	public Integer getUserid() {
+		return userid;
+	}
+
+	public void setUserid(Integer userid) {
+		this.userid = userid;
+	}
+
+	public LocalDate getDateOfOrder() {
+		return dateOfOrder;
+	}
+
+	public void setDateOfOrder(LocalDate dateOfOrder) {
+		this.dateOfOrder = dateOfOrder;
+	}
+
+	public LocalTime getTimeOfOrder() {
+		return timeOfOrder;
+	}
+
+	public void setTimeOfOrder(LocalTime timeOfOrder) {
+		this.timeOfOrder = timeOfOrder;
+	}
+
+	public double getTotalPayment() {
+		return totalPayment;
+	}
+
+	public void setTotalPayment(double totalPayment) {
+		this.totalPayment = totalPayment;
+	}
+
+	public Set<Orderline> getOrderlines() {
+		return orderlines;
+	}
+
+	public void setOrderlines(Set<Orderline> orderlines) {
+		this.orderlines = orderlines;
+	}
+
+	public DeliveryAddress getDeliveryAddress() {
+		return deliveryAddress;
+	}
+
+	public void setDeliveryAddress(DeliveryAddress deliveryAddress) {
+		this.deliveryAddress = deliveryAddress;
+	}
+	
 	@Override
 	public String toString() {
 		return "Orders [orderid=" + orderid + ", userid=" + userid + ", dateOfOrder=" + dateOfOrder + ", timeOfOrder="
 				+ timeOfOrder + ", totalPayment=" + totalPayment + "]";
 	}
-       
-    
+
 }

@@ -9,7 +9,6 @@ import org.springframework.stereotype.Repository;
 
 import com.onlineclothing.springboot.entities.Orders;
 
-
 @Repository
 public interface OrderRepository extends JpaRepository<Orders, Integer>{
 	

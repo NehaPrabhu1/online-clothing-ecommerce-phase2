@@ -14,9 +14,9 @@ class DiscountRepositoryTest {
 	private DiscountRepository discountRepository;
 
 	@Test
-	public void findTop1ByCategoryIdAndStatusOrderByDiscountPercentDescTest() {
+	public void findTop1ByCategoryidAndStatusOrderByDiscountPercentDescTest() {
 		
-		Discount discount = discountRepository.findTop1ByCategoryIdAndStatusOrderByDiscountPercentDesc(1, "live");
+		Discount discount = discountRepository.findTop1ByCategoryidAndStatusOrderByDiscountPercentDesc(1, "live");
 		System.out.println(discount);
 	}
 

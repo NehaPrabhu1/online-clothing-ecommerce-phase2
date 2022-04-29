@@ -17,7 +17,11 @@ public class CategoryService {
 	@Autowired
 	private CategoryRepository categoryRepository;
 	
-	public List<Products> getProductsByCategory(Integer categoryid){
+	public List<Categories> findAllCategories(){
+		return categoryRepository.findAll();
+	}
+	
+	public List<Products> findProductsByCategory(Integer categoryid){
 		List<Products> products = null;
 		Optional<Categories> optional = categoryRepository.findById(categoryid);
 		if(optional.isPresent()) {

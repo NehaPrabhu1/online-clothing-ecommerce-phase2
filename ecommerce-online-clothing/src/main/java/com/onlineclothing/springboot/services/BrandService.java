@@ -18,7 +18,11 @@ public class BrandService {
 	@Autowired
 	private BrandRepository brandRepository;
 	
-	public List<Products> getProductsByBrand(Integer brandid){
+	public List<Brands> findAllBrands(){
+		return brandRepository.findAll();
+	}
+	
+	public List<Products> findProductsByBrand(Integer brandid){
 		List<Products> products = null;
 		Optional<Brands> optional = brandRepository.findById(brandid);
 		if(optional.isPresent()) {
@@ -31,5 +35,6 @@ public class BrandService {
 	public long getBrandsCount() {
     	return brandRepository.count();
     }
+
 
 }

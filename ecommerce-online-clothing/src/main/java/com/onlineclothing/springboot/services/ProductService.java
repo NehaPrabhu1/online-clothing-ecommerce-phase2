@@ -105,7 +105,7 @@ public class ProductService {
 		List<Products> products = productRepository.findByColor(color);
 		return products;
 	}
-	//count products (Do not Delete)
+	//count products
 	public long getProductsCount() {
     	return productRepository.count();
     }

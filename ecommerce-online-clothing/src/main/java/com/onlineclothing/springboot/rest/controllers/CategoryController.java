@@ -12,29 +12,24 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.onlineclothing.springboot.entities.Categories;
 import com.onlineclothing.springboot.entities.Products;
-import com.onlineclothing.springboot.repositories.CategoryRepository;
 import com.onlineclothing.springboot.services.CategoryService;
-
 
 @RestController
 @RequestMapping("/api/v1")
 public class CategoryController {
 	
 	@Autowired
-	private CategoryRepository categoryRepository;
-	
-	@Autowired
 	private CategoryService categoryService;
 	
 	@GetMapping("/categories")
 	public ResponseEntity<List<Categories>> getAllCategories(){
-		List<Categories> allBrands = categoryRepository.findAll();
+		List<Categories> allBrands = categoryService.findAllCategories();
 		return new ResponseEntity<List<Categories>>(allBrands,HttpStatus.OK);
 	}
 
 	@GetMapping("/categories/{id}")
 	public ResponseEntity<List<Products>> getAllProductsByCategory(@PathVariable("id") Integer id){
-		List<Products> products = categoryService.getProductsByCategory(id);
+		List<Products> products = categoryService.findProductsByCategory(id);
 		if(!products.isEmpty())
 			return new ResponseEntity<List<Products>>(products,HttpStatus.OK);
 		return new ResponseEntity<List<Products>>(HttpStatus.BAD_REQUEST);

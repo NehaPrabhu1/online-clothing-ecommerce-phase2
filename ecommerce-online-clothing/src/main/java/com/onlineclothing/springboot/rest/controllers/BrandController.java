@@ -14,39 +14,33 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.onlineclothing.springboot.entities.Brands;
 import com.onlineclothing.springboot.entities.Products;
-import com.onlineclothing.springboot.repositories.BrandRepository;
 import com.onlineclothing.springboot.services.BrandService;
-
 
 @RestController
 @RequestMapping("/api/v1")
 public class BrandController {
-	
-	@Autowired
-	private BrandRepository brandRepository;
-	
+
 	@Autowired
 	private BrandService brandService;
-	
+
 	@GetMapping("/brands")
-	public ResponseEntity<List<Brands>> getAllBrands(){
-		List<Brands> allBrands = brandRepository.findAll();
-		return new ResponseEntity<List<Brands>>(allBrands,HttpStatus.OK);
+	public ResponseEntity<List<Brands>> getAllBrands() {
+		List<Brands> allBrands = brandService.findAllBrands();
+		return new ResponseEntity<List<Brands>>(allBrands, HttpStatus.OK);
 	}
-	
+
 	@GetMapping("/brands/{id}")
-	public ResponseEntity<List<Products>> getProductsByBrand(@PathVariable("id") Integer brandid){
-		List<Products> products = brandService.getProductsByBrand(brandid);
-		if(!products.isEmpty()) {
-			return new ResponseEntity<List<Products>>(products,HttpStatus.OK);
+	public ResponseEntity<List<Products>> getProductsByBrand(@PathVariable("id") Integer brandid) {
+		List<Products> products = brandService.findProductsByBrand(brandid);
+		if (!products.isEmpty()) {
+			return new ResponseEntity<List<Products>>(products, HttpStatus.OK);
 		}
 		return new ResponseEntity<List<Products>>(HttpStatus.BAD_REQUEST);
 	}
-	
-	 @GetMapping("/brands/count")
-	    public long getCount() {
-	    	return brandService.getBrandsCount();
-	    }
-	
-	
+
+	@GetMapping("/brands/count")
+	public long getCount() {
+		return brandService.getBrandsCount();
+	}
+
 }
