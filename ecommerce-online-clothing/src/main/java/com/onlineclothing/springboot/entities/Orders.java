@@ -61,7 +61,7 @@ public class Orders {
 	private Set<Orderline> orderlines = new HashSet<Orderline>();
 
 	@OneToOne(cascade = CascadeType.ALL)
-	@PrimaryKeyJoinColumn(name = "addressid", referencedColumnName = "addressid")
+	@JoinColumn(name = "addressid")
 	private DeliveryAddress deliveryAddress;
 
 	public Integer getOrderid() {

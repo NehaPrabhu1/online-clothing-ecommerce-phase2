@@ -71,5 +71,11 @@ public class DeliveryAddress {
 	public void setPincode(String pincode) {
 		this.pincode = pincode;
 	}
+	public String getStreet() {
+		return street;
+	}
+	public void setStreet(String street) {
+		this.street = street;
+	}
 	
 }
