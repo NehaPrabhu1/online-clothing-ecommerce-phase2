@@ -5,6 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -42,6 +43,10 @@ public class Reviews {
 	@JoinColumn(name="orderlineid",referencedColumnName = "orderlineid",insertable = false, updatable = false)
 	@JsonIgnore
 	private Orderline orderline;
+	
+	@ManyToOne
+	@JoinColumn(name="userid",insertable = false, updatable = false)
+	private Users user;
 
 	public Integer getReviewid() {
 		return reviewid;
@@ -98,11 +103,21 @@ public class Reviews {
 	public void setOrderline(Orderline orderline) {
 		this.orderline = orderline;
 	}
+	
+	public Users getUser() {
+		return user;
+	}
+
+	public void setUser(Users user) {
+		this.user = user;
+	}
 
 	@Override
 	public String toString() {
 		return "Reviews [reviewid=" + reviewid + ", userid=" + userid + ", orderlineid=" + orderlineid + ", productid="
 				+ productid + ", rating=" + rating + ", review=" + review + "]";
 	}
+
+	
 	
 }

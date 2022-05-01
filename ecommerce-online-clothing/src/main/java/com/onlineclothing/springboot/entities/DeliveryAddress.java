@@ -41,6 +41,7 @@ public class DeliveryAddress {
 	private String city;
 	private String country;
 	private String pincode;
+	
 	public Integer getAddressid() {
 		return addressid;
 	}
