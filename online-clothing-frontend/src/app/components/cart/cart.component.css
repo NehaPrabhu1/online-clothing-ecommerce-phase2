@@ -1,0 +1,38 @@
+.empty {
+    height: 300px;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+  }
+  
+  .cart {
+    /*display: flex;*/
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  .imgBox {
+    flex: 0 0 6rem;
+  }
+  .img {
+    height: 150px;
+    width: 150px;
+  }
+  .name {
+    flex: 1;
+  }
+  .size {
+    flex: 1;
+  }
+  .price {
+    flex: 1;
+  }
+  .quantity {
+    width: 3rem;
+    text-align: center;
+  }
+  .btn {
+    margin: auto;
+  }
+  

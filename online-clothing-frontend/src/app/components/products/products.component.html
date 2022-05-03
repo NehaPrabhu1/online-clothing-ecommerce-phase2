@@ -1,0 +1,45 @@
+
+    <h5 class="display-4">{{title}}</h5>
+    <hr>
+<div class="row row-cols-1 row-cols-md-3 g-3">
+    <div *ngFor="let product of products"  class="col">
+        <br>
+        <div  class="card mb-4 shadow-sm p-3 mb-5 bg-white rounded" style="width: 18rem;">
+            <a [routerLink]="['/products',product.productid]">
+                <img src="{{product.productImage}}" style="height:310px;width:100%" class="card-img-top border" alt="{{product.color+' '+product.productName}}">
+            </a>
+                <div class="card-body">
+                <h5 class="card-title">{{product.productName}} </h5>
+                <p class="card-text">M.R.P.: {{product.price|currency:'INR'}} <span class="badge bg-danger">{{product.discount}}% off</span>
+                    <br>Color: {{product.color}} <br> Brand: {{product.brand.brandName}} &nbsp;</p>
+                    
+            </div>
+        </div>
+    </div>
+<hr style="width:100%;">
+</div>
+<div *ngIf="pagination" class="paging">
+    <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
+        <div class="btn-group me-2" role="group" aria-label="First group">
+            <button type="button"  class="btn btn-primary" *ngIf="pgnum > 0"> 
+                <a class = "text-light" [routerLink]="['/products/page']" [queryParams]="{ pgnum: pgnum-1,size:size}">&lt;Prev</a>
+            </button>
+            <div *ngFor="let page of pages">
+
+            <button type="button" *ngIf="page != pgnum" class="btn border-primary"> 
+                <a class = "text-dark" [routerLink]="['/products/page']" [queryParams]="{ pgnum: page,size:size}">{{page+1}}</a>
+            </button>
+
+            <button type="button" *ngIf="page == pgnum" class="btn btn-primary"> 
+                <a class = "text-light" [routerLink]="['/products/page']" [queryParams]="{ pgnum: page,size:size}" >{{page+1}}</a>
+            </button>
+        </div>
+        <button type="button"  class="btn btn-primary" *ngIf="pgnum < totalPages-1"> 
+            <a class = "text-light" [routerLink]="['/products/page']" [queryParams]="{ pgnum: pgnum+1,size:size}">Next&gt;</a>
+        </button>
+        </div>
+</div>
+
+</div>
+
+

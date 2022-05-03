@@ -1,0 +1,114 @@
+<nav class ="navbar navbar-light bg-primary">
+    <div class ="container-fluid">
+    <h1 style="color:white">  Online-Clothing</h1>
+    <div class="d-flex">
+        <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"class="btn btn-success">Add Product</button>
+    </div>
+
+    </div>
+</nav>
+
+<div class="table-responsive-sm">
+<table class="table mt-3">
+    <thead>
+        <tr>
+            <th scope="col">product_id</th>
+            <th scope="col">categoryid</th>
+            <th scope="col">brandid</th>
+            <th scope="col">productName</th>
+            <th scope="col">Price</th>
+            <th scope="col">color</th>
+            <th scope="col">discount</th>
+            <th scope="col">productImg</th>
+            
+         
+            
+        </tr>
+    </thead>
+    <tbody>
+          <tr *ngFor="let row of products">
+             <td>{{row.productid}}</td>
+            <td>{{row.categoryid}}</td>
+            <td>{{row.brandid}}</td>
+            <td>{{row.productName}}</td>
+            <td>{{row.price | currency:'INR'}}</td>
+            <td>{{row.color}}</td>
+            <td>{{row.discount}}%</td>
+            <td>{{row.productImage}}</td>
+            <td>
+             <!-- <button  (click)="onEdit(row)" style="color:aliceblue;"  type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"class= "btn btn-info">Edit</button>  -->
+                <!-- <button type="button" (click) = "deleteDiscount(row)" class="btn btn-danger mx-3">Delete</button> -->
+              </td>
+            </tr>
+    </tbody>
+</table>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Discounts</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form action = "" #productform="ngForm">
+                <div class="form-outline">
+                    <label class= "form-label" for="category">Category</label>
+                    <div class="input-group input-group-m mb-3">
+                        <select class="form-select" name="category" [(ngModel)]="product.categoryid">
+                            <option value="0">--Select Category--</option>
+                            <option *ngFor="let category of categories" [value]="category.categoryid">{{category.categoryGender}} {{category.categoryName}}</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-outline">
+                    <label class= "form-label" for="brand">Brand</label>
+                    <div class="input-group input-group-m mb-3">
+                        <select class="form-select" name="brand" [(ngModel)]="product.brandid">
+                            <option value="0">--Select Brand--</option>
+                            <option *ngFor="let brand of brands" [value]="brand.brandid">{{brand.brandName}}</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-outline">
+                    <label class="form-label" for="ProductName">Product Name</label>
+                    <input type="text" id="productName" name="productname"
+                     class="form-control"[(ngModel)]="product.productName">
+                </div>
+
+                <div class="form-outline">
+                    <label class="form-label" for="price">Price</label>
+                    <input type="text" id="price" name="price"
+                     class="form-control"[(ngModel)]="product.price">
+                </div>
+
+                <div class="form-outline">
+                    <label class="form-label" for="color">Color</label>
+                    <input type="text" id="color" name="color"
+                     class="form-control"[(ngModel)]="product.color">
+                </div>
+
+                <div class="form-outline">
+                    <label class="form-label" for="productImg">Product Image</label>
+                    <input type="text" id="productImg" name="productImg"
+                     class="form-control"[(ngModel)]="product.productImage">
+                </div>
+
+               
+                
+            </form>
+        </div>
+
+        <div class="modal-footer">
+            <button type="button" id="cancel" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" (click)="postProductDetails()"class="btn btn-primary">Add</button>
+          </div>
+         </div>
+        </div>
+        </div>
+        
+            
+            
