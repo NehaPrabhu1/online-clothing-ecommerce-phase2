@@ -1,5 +1,7 @@
 package com.onlineclothing.springboot.entities;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -8,8 +10,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -48,6 +52,11 @@ public class Products {
 
 	private double discount;
 
+	@OneToMany
+	@JoinColumn(name="productid",insertable = false, updatable = false)
+	private List<Reviews> productReviews;
+	
+	
 	@Column(name = "product_image")
 	private String productImage;
 
@@ -130,6 +139,14 @@ public class Products {
 	public void setBrandid(Integer brandid) {
 		this.brandid = brandid;
 	}
+	
+	public List<Reviews> getProductReviews() {
+		return productReviews;
+	}
+
+	public void setProductReviews(List<Reviews> productReviews) {
+		this.productReviews = productReviews;
+	}
 
 	//toString() does not affect the json object created - used only to display object in sysout (needed for testing)
 	@Override
@@ -138,6 +155,8 @@ public class Products {
 				+ ", productName=" + productName + ", price=" + price + ", color=" + color + ", discount=" + discount
 				+ ", productImage=" + productImage + "]";
 	}
+
+	
 	
 	
 }

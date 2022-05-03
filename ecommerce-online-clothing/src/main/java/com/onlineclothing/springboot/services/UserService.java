@@ -33,5 +33,7 @@ public class UserService {
 	public long getUsersCount() {
 		return userRepository.count();
 	}
+	
+	//getUserByEmail - service + controller
 
 }

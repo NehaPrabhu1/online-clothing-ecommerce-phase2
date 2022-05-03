@@ -9,5 +9,7 @@ import com.onlineclothing.springboot.entities.Users;
 public interface UserRepository extends JpaRepository<Users, Integer>{
 	
 	Users findByUserid(Integer userid);
+	
+	Users findByEmail(String userEmail);
 
 }

@@ -11,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -42,7 +43,11 @@ public class Users {
 
 	@Column(name = "user_role")
 	private String role;
+	
+	@OneToOne(mappedBy = "user")
+	private LoginDetails logindetail;
 
+	
 	public Integer getUserid() {
 		return userid;
 	}
@@ -81,6 +86,14 @@ public class Users {
 
 	public void setRole(String role) {
 		this.role = role;
+	}
+
+	public LoginDetails getLogindetail() {
+		return logindetail;
+	}
+
+	public void setLogindetail(LoginDetails logindetail) {
+		this.logindetail = logindetail;
 	}
 
 }
