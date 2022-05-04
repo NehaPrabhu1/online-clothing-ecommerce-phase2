@@ -5,6 +5,7 @@ import { Orderline } from 'src/app/models/orderline';
 import { Product } from 'src/app/models/product';
 import { Review } from 'src/app/models/review';
 import { User } from 'src/app/models/user';
+import { AuthService } from 'src/app/services/auth.service';
 import { OrderService } from 'src/app/services/order.service';
 import { ReviewService } from 'src/app/services/review.service';
 
@@ -23,11 +24,25 @@ export class OrdersComponent implements OnInit {
   product:Product=<Product>{};
   review:Review = <Review>{};
 
-  constructor(private orderService:OrderService, private reviewService:ReviewService) { }
+  islogin:boolean = false;
+  userid:number = 0;
+  
+
+  constructor(private orderService:OrderService, private reviewService:ReviewService,
+    private authService: AuthService) { }
 
   ngOnInit(): void {
-    let userid = 2;//get userid
-    this.orderService.getAllOrdersOfUser(userid).subscribe(res=>{
+    this.islogin = localStorage.getItem("status") ? true : false;
+      if(this.islogin){
+        if(this.authService.getCurrentUser() != null){
+          this.user = JSON.parse(this.authService.getCurrentUser()!);
+          let role = this.user.role;       
+        if(role === "user"){
+          this.userid = this.user.userid;
+        } 
+        }
+      }
+    this.orderService.getAllOrdersOfUser(this.userid).subscribe(res=>{
       this.orders = res;
       let noOfOrders = this.orders.length;
       for(let i=0; i<noOfOrders; i++){
@@ -47,7 +62,7 @@ export class OrdersComponent implements OnInit {
   }
 
   onReviewSubmit(){
-    this.review.userid = 2;//get userid
+    this.review.userid = this.userid;
     this.review.orderlineid = this.orderline.orderlineid;
     this.review.productid = this.product.productid;
     this.reviewService.postReview(this.review).subscribe(res=>{

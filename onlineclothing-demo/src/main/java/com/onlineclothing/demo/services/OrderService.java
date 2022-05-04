@@ -51,32 +51,12 @@ public class OrderService {
 	}
 
 	// get orders of particular user and sort in desc order of their placement
-	public List<Orders> findOrdersOfUserAndApplySortingAndPaging(Integer userid, int pageNo, int size) {
-		List<Orders> orders = null;
-		if (size <= 0)
-			size = 2;
-		if (pageNo <= 0)
-			pageNo = 0;
+	public List<Orders> findOrdersOfUserAndApplySortingAndPaging(Integer userid) {
 
-		orders = findOrdersOfUser(userid);
-		if (orders.isEmpty()) {
-			return orders;
-		}
-
-		Pageable pageable = PageRequest.of(pageNo, size);
-		Page<Orders> page = orderRepository.findByUserid(userid, pageable);
-		int totalPages = page.getTotalPages();
-		if (totalPages <= pageNo) {
-			pageNo = totalPages - 1;
-		}
-
-		pageable = PageRequest.of(pageNo, size,
-				Sort.by(new Sort.Order(Direction.DESC, "dateOfOrder"), 
-						new Sort.Order(Direction.DESC, "timeOfOrder")));
-		page = orderRepository.findByUserid(userid, pageable);
-		if (page.hasContent()) {
-			orders = page.getContent();
-		}
+		Sort newSort = Sort.by(new Sort.Order(Direction.DESC, "dateOfOrder"), 
+						new Sort.Order(Direction.DESC, "timeOfOrder"));
+		 List<Orders> orders = orderRepository.findByUserid(userid, newSort);
+		
 		return orders;
 	}
 	

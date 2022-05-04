@@ -10,6 +10,6 @@ export class ReviewService {
   constructor(private http:HttpClient) { }
 
   postReview(review:Review){
-    return this.http.post<Review>('http://localhost:8080/api/v1/products/orders/review',review);
+    return this.http.post<Review>('http://localhost:8080/api/v1/user/products/orders/review',review);
   }
 }

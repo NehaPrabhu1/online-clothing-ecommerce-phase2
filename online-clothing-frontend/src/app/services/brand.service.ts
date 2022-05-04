@@ -19,6 +19,6 @@ export class BrandService {
   }
 
   getBrandsCount(){
-    return this.http.get<number>('http://localhost:8080/api/v1/brands/count');
+    return this.http.get<number>('http://localhost:8080/api/v1/admin/brands/count');
   }
 }

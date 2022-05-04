@@ -31,7 +31,7 @@ public class ReviewController {
 		return new ResponseEntity<List<Reviews>>(HttpStatus.BAD_REQUEST);
 	}
 	
-	@PostMapping("/products/orders/review") // /user
+	@PostMapping("/user/products/orders/review") // /user
 	public ResponseEntity<Reviews> saveReview(@RequestBody Reviews review){
 		Reviews newReview = reviewService.insertNewReview(review);
 		return new ResponseEntity<Reviews>(newReview,HttpStatus.CREATED);

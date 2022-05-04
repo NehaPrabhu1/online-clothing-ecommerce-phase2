@@ -10,10 +10,10 @@ export class ApiService {
   constructor(private http: HttpClient) { }
 
   public postDiscount(discount:Discount ){
-     return this.http.post("http://localhost:8080/api/v1/discount",discount);
+     return this.http.post("http://localhost:8080/api/v1/admin/discount",discount);
    }
   
   public getDiscount(){ 
-    return this.http.get<Discount[]>("http://localhost:8080/api/v1/discount");
+    return this.http.get<Discount[]>("http://localhost:8080/api/v1/admin/discount");
   }
 }

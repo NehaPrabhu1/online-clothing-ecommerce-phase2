@@ -34,7 +34,9 @@ public class UserService {
 		return userRepository.count();
 	}
 	
-	//getUserByEmail - service + controller
+	public Users getUserByEmail(String email) {
+		return userRepository.findByEmail(email);
+	}
 
 
 }

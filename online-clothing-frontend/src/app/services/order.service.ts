@@ -13,7 +13,7 @@ export class OrderService {
   constructor(private http:HttpClient) { }
 
   getAllOrdersOfUser(id:number){
-    return this.http.get<Order[]>('http://localhost:8080/api/v1/orders/user/'+id);
+    return this.http.get<Order[]>('http://localhost:8080/api/v1/user/orders/userid/'+id);
   }
 
   captureOrder(order:Order){
@@ -27,14 +27,14 @@ export class OrderService {
   }
 
   postOrder(order:Order){
-    return this.http.post('http://localhost:8080/api/v1/orders',order);
+    return this.http.post('http://localhost:8080/api/v1/user/orders',order);
   }
 
   getOrdersCount(){
-    return this.http.get<number>('http://localhost:8080/api/v1/orders/count');
+    return this.http.get<number>('http://localhost:8080/api/v1/admin/orders/count');
   }
 
   getOrderlineCount(){
-    return this.http.get<number>('http://localhost:8080/api/v1/orderlines/count');
+    return this.http.get<number>('http://localhost:8080/api/v1/admin/orderlines/count');
   }
 }

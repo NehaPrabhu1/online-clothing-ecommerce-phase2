@@ -29,7 +29,7 @@ public class OrderController {
 	}
 	
 	//http://localhost:8080/api/v1/orders
-	@GetMapping("/orders") // /user
+	@GetMapping("/user/orders") // /user
 	public ResponseEntity<List<Orders>> getAllOrders(){
 		List<Orders> allOrders = orderService.findAllOrders();
 		if(!allOrders.isEmpty())
@@ -38,7 +38,7 @@ public class OrderController {
 	}
 	
 	//http://localhost:8080/api/v1/orders
-	@PostMapping("/orders")// /user
+	@PostMapping("/user/orders")// /user
 	public ResponseEntity<Orders> saveOrder(@RequestBody Orders order){
 		
 		Orders savedOrder = orderService.insertNewOrder(order);
@@ -46,7 +46,7 @@ public class OrderController {
 	}
 	
 	//http://localhost:8080/api/v1/orders/1
-	@GetMapping("/orders/{id}") // /user
+	@GetMapping("/user/orders/{id}") // /user
 	public ResponseEntity<Orders> getOrderByOrderid(@PathVariable("id") Integer orderid){
 		Orders order = orderService.findOrderById(orderid);
 		if(order != null)
@@ -55,26 +55,16 @@ public class OrderController {
 	}
 	
 	//http://localhost:8080/api/v1/orders/user/2
-	@GetMapping("/orders/user/{id}") // /user
+	@GetMapping("/user/orders/userid/{id}") // /user
 	public ResponseEntity<List<Orders>> getAllOrdersOfUser(@PathVariable("id") Integer userid){
-		List<Orders> orders = orderService.findOrdersOfUser(userid);
+		List<Orders> orders = orderService.findOrdersOfUserAndApplySortingAndPaging(userid);
 		if(!orders.isEmpty())
 			return new ResponseEntity<List<Orders>>(orders,HttpStatus.OK);
 		return new ResponseEntity<List<Orders>>(HttpStatus.BAD_REQUEST);
 	}
 	
-//	//http://localhost:8080/api/v1/orders/user/2/page?pgnum=0&size=2
-//	@GetMapping("/orders/user/{id}/page")
-//	public ResponseEntity<List<Orders>> getPagedOrdersOfUser(@PathVariable("id") Integer userid,
-//			@RequestParam("pgnum") int pageNo, @RequestParam("size") int size){
-//		
-//		List<Orders> orders = orderService.findOrdersOfUserAndApplySortingAndPaging(userid, pageNo, size);
-//		if(!orders.isEmpty())
-//			return new ResponseEntity<List<Orders>>(orders,HttpStatus.OK);
-//		return new ResponseEntity<List<Orders>>(HttpStatus.BAD_REQUEST);
-//	}
 	
-	@GetMapping("/orders/count") // /admin
+	@GetMapping("/admin/orders/count") // /admin
     public long getCount() {
     	return orderService.getOrdersCount();
     }

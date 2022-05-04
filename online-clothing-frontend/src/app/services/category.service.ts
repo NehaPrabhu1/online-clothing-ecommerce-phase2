@@ -15,7 +15,7 @@ export class CategoryService {
   }
 
   getCategoriesCount(){
-    return this.http.get<number>('http://localhost:8080/api/v1/categories/count');
+    return this.http.get<number>('http://localhost:8080/api/v1/admin/categories/count');
   }
 
   getProductsByCategoryId(id:number){

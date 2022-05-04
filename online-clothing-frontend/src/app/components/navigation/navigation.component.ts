@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Brand } from 'src/app/models/brand';
+import { User } from 'src/app/models/user';
+import { AuthService } from 'src/app/services/auth.service';
 import { BrandService } from 'src/app/services/brand.service';
 import { CartService } from 'src/app/services/cart.service';
 
@@ -13,16 +16,41 @@ export class NavigationComponent implements OnInit {
   searchTerm='';
   brands!:Brand[];
   itemInCart:number = 0;
-  constructor(private brandService:BrandService, private cartService:CartService) { }
+  islogin:boolean;
+  name:String = "Visitor";
+  user:User;
+
+  constructor(private brandService:BrandService, private cartService:CartService,
+    private authService:AuthService, private router:Router) { 
+    }
 
   ngOnInit(): void {
+    this.islogin = localStorage.getItem("status") ? true : false;
+      if(this.islogin){
+        if(this.authService.getCurrentUser() != null){
+          this.user = JSON.parse(this.authService.getCurrentUser()!);
+          let role = this.user.role;       
+        if(role === "user"){
+          this.name = this.user.firstName;
+        } 
+        }
+      }
     this.brandService.getAllBrands().subscribe(res=>{
       this.brands = res;
       this.cartService.cartItems.subscribe(d=>{
         this.itemInCart = d.length;
       });
     });
-    
+  }
+
+  logout(){
+    this.authService.logout();
+    this.router.navigate(['home']);
+    window.location.reload();
+  }
+
+  login(){
+    this.router.navigate(['login']);
   }
 
 }

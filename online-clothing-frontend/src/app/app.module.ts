@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ProductsComponent } from './components/products/products.component';
 import { OrdersComponent } from './components/orders/orders.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule,  HTTP_INTERCEPTORS  } from '@angular/common/http';
 import { ProductComponent } from './components/product/product.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
@@ -20,6 +20,8 @@ import { AdmindashboardComponent } from './components/admin/admindashboard/admin
 import { AdmindashboarddiscountComponent } from './components/admin/admindashboarddiscount/admindashboarddiscount.component';
 import { AdmindashboardproductComponent } from './components/admin/admindashboardproduct/admindashboardproduct.component';
 import { AdminheaderComponent } from './components/admin/adminheader/adminheader.component';
+import { LoginComponent } from './components/login/login.component';
+import { HttpInterceptorService } from './services/basicauth.service';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,8 @@ import { AdminheaderComponent } from './components/admin/adminheader/adminheader
     AdmindashboardComponent,
     AdmindashboarddiscountComponent,
     AdmindashboardproductComponent,
-    AdminheaderComponent
+    AdminheaderComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +49,13 @@ import { AdminheaderComponent } from './components/admin/adminheader/adminheader
     HttpClientModule,
     FormsModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpInterceptorService,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

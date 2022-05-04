@@ -22,13 +22,13 @@ public class DiscountController {
 	@Autowired
 	private DiscountService discountService;
 	
-	@GetMapping("/discount") // /admin
+	@GetMapping("/admin/discount") // /admin
 	public ResponseEntity<List<Discount>> getAllDiscounts(){
 		List<Discount> discounts = discountService.updateDiscount();
 		return new ResponseEntity<List<Discount>>(discounts,HttpStatus.OK);
 	}
 	
-	@PostMapping("/discount")
+	@PostMapping("/admin/discount")
 	public ResponseEntity<Discount> createDiscount(@RequestBody Discount discount){
 		Discount newDiscount = discountService.newDiscount(discount);
 		if(newDiscount == null) {
@@ -46,7 +46,7 @@ public class DiscountController {
 		return new ResponseEntity<Discount>(liveDiscountByCategory,HttpStatus.CREATED);
 	}
 	
-	@GetMapping("/discount/count") // /admin
+	@GetMapping("/admin/discount/count") // /admin
     public long getCount() {
     	return discountService.getDiscountCount();
     }

@@ -37,7 +37,7 @@ public class BrandController {
 		return new ResponseEntity<List<Products>>(HttpStatus.BAD_REQUEST);
 	}
 	
-	 @GetMapping("/brands/count") // /admin/
+	 @GetMapping("/admin/brands/count") // /admin/
 	    public long getCount() {
 	    	return brandService.getBrandsCount();
 	    }

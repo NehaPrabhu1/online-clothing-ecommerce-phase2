@@ -6,12 +6,14 @@ import { AdmindashboardproductComponent } from './components/admin/admindashboar
 import { CartComponent } from './components/cart/cart.component';
 import { DeliveryaddressComponent } from './components/deliveryaddress/deliveryaddress.component';
 import { HomeComponent } from './components/home/home.component';
+import { LoginComponent } from './components/login/login.component';
 import { OrdersComponent } from './components/orders/orders.component';
 import { ProductComponent } from './components/product/product.component';
 import { ProductsComponent } from './components/products/products.component';
 
 const routes: Routes = [
   {path:'',component:HomeComponent},
+  {path:'login',component:LoginComponent},
   {path:'home',component:HomeComponent},
   {path:'products',component:ProductsComponent},
   {path:'products/search',component:ProductsComponent},//check this
