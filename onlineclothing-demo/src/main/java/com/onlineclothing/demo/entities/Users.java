@@ -24,7 +24,7 @@ import lombok.ToString;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
+//@ToString
 public class Users {
 	
 	@Id
@@ -47,6 +47,14 @@ public class Users {
 	@OneToOne(mappedBy = "user")
 	private LoginDetails logindetail;
 
+	@Override
+	public String toString() {
+		return "Users [userid=" + userid + ", email=" + email + ", firstName=" + firstName + ", lastName=" + lastName
+				+ ", role=" + role + "]";
+	}
+
 //	@OneToMany(cascade= CascadeType.ALL, mappedBy = "user", fetch = FetchType.EAGER)
 //	private List<Orders> orders = new ArrayList<Orders>();
+	
+	
 }

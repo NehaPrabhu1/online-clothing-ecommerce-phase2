@@ -68,7 +68,8 @@ export class OrdersComponent implements OnInit {
     this.reviewService.postReview(this.review).subscribe(res=>{
       console.log(res);
       alert("Review Posted, thank you!!");
-    })
+      window.location.reload();
+    });
 
   }
 

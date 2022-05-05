@@ -32,7 +32,9 @@
             <td>{{row.endDate | date : 'dd-MM-yyyy'}}</td>
             <td>{{row.endTime}}</td>
             <td>{{row.discountPercent}}%</td>
-            <td>{{row.status}}</td>
+            <td *ngIf="row.status == 'live'"><span class ="badge bg-success">{{row.status}}</span></td>
+            <td *ngIf="row.status == 'expired'"><span class ="badge bg-danger">{{row.status}}</span></td>
+            <td *ngIf="row.status == 'upcoming'"><span class ="badge bg-primary">{{row.status}}</span></td>
             <td>
              <!-- <button  (click)="onEdit(row)" style="color:aliceblue;"  type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"class= "btn btn-info">Edit</button>  -->
                 <!-- <button type="button" (click) = "deleteDiscount(row)" class="btn btn-danger mx-3">Delete</button> -->

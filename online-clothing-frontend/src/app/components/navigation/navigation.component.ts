@@ -20,6 +20,9 @@ export class NavigationComponent implements OnInit {
   name:String = "Visitor";
   user:User;
 
+  isAdmin:boolean = false;
+  role:String;
+
   constructor(private brandService:BrandService, private cartService:CartService,
     private authService:AuthService, private router:Router) { 
     }
@@ -32,8 +35,16 @@ export class NavigationComponent implements OnInit {
           let role = this.user.role;       
         if(role === "user"){
           this.name = this.user.firstName;
+          this.isAdmin = false;
         } 
+        if(role === "admin"){
+          this.isAdmin = true;
+          this.router.navigate(['admin']);
         }
+        }
+      }
+      else{
+        this.router.navigate(['']);
       }
     this.brandService.getAllBrands().subscribe(res=>{
       this.brands = res;
@@ -45,8 +56,7 @@ export class NavigationComponent implements OnInit {
 
   logout(){
     this.authService.logout();
-    this.router.navigate(['home']);
-    window.location.reload();
+    window.location.reload();    
   }
 
   login(){

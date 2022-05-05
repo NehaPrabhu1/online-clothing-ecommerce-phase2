@@ -44,10 +44,6 @@ public class ProductService {
 		}
 	}
 
-//	public List<Products> findAllProducts() {
-//		updateProductDiscount();
-//		return productRepository.findAll();
-//	}
 
 	public Products save(Products product) {
 		Products savedProduct = productRepository.save(product);

@@ -16,8 +16,8 @@ const routes: Routes = [
   {path:'login',component:LoginComponent},
   {path:'home',component:HomeComponent},
   {path:'products',component:ProductsComponent},
-  {path:'products/search',component:ProductsComponent},//check this
-  {path:'products/page',component:ProductsComponent},//check this
+  {path:'products/search',component:ProductsComponent},
+  {path:'products/page',component:ProductsComponent},
   {path:'products/brand/:id',component:ProductsComponent},
   {path:'products/category/:id',component:ProductsComponent},
   {path:'products/gender/:gender',component:ProductsComponent},

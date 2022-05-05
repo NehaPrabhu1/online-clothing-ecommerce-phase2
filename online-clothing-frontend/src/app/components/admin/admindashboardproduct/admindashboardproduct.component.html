@@ -10,7 +10,7 @@
 
 <div class="table-responsive-sm">
 <table class="table mt-3">
-    <thead>
+    <thead >
         <tr>
             <th scope="col">product_id</th>
             <th scope="col">categoryid</th>
@@ -19,12 +19,10 @@
             <th scope="col">Price</th>
             <th scope="col">color</th>
             <th scope="col">discount</th>
-            <th scope="col">productImg</th>
-            
-         
-            
+            <th scope="col">productImg</th>      
         </tr>
     </thead>
+
     <tbody>
           <tr *ngFor="let row of products">
              <td>{{row.productid}}</td>
@@ -33,8 +31,9 @@
             <td>{{row.productName}}</td>
             <td>{{row.price | currency:'INR'}}</td>
             <td>{{row.color}}</td>
-            <td>{{row.discount}}%</td>
-            <td>{{row.productImage}}</td>
+            <td *ngIf="row.discount > 0"><span class="badge bg-success">{{row.discount}}%</span></td>
+            <td *ngIf="row.discount <= 0">{{row.discount}}%</td>
+            <td><img src = {{row.productImage}} style="height:50px;width:35px;"></td>
             <td>
              <!-- <button  (click)="onEdit(row)" style="color:aliceblue;"  type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"class= "btn btn-info">Edit</button>  -->
                 <!-- <button type="button" (click) = "deleteDiscount(row)" class="btn btn-danger mx-3">Delete</button> -->
@@ -48,7 +47,7 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Discounts</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Products</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">

@@ -59,7 +59,33 @@ export class DeliveryaddressComponent implements OnInit {
     })
   }
 
+  validate():boolean{
+    let isValid = true;
+    if(this.deliveryAddress.addressline == null || this.deliveryAddress.addressline == ''){
+      isValid = false;
+    }
+    if(this.deliveryAddress.street == null || this.deliveryAddress.street == ''){
+      isValid = false;
+    }
+    if(this.deliveryAddress.city == null || this.deliveryAddress.city == ''){
+      isValid = false;
+    }
+    if(this.deliveryAddress.country == null || this.deliveryAddress.country == ''){
+      isValid = false;
+    }
+    if(this.deliveryAddress.pincode == null || this.deliveryAddress.pincode == ''){
+      isValid = false;
+    }
+    if(this.deliveryAddress.city == "0" || this.deliveryAddress.country == "0"){
+      isValid = false;
+    }
+
+    return isValid;
+  }
+
   onSubmit(){
+    let isValid = this.validate();
+    if(isValid){
     this.order.deliveryAddress = this.deliveryAddress;
     this.orderService.postOrder(this.order).subscribe(res=>{
       console.log(res);
@@ -71,6 +97,10 @@ export class DeliveryaddressComponent implements OnInit {
     (error)=>{
       alert("Order was not placed !!!");
     });
+  }
+  else{
+    alert("Do not keep any field empty !!!");
+  }
 
   }
 

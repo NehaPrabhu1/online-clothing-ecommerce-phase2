@@ -18,7 +18,7 @@
                 </select>
             </h6>
             <h5><b>
-                Price: {{product.price | currency :'INR'}}
+                Price: {{product.price*(1- product.discount/100) | currency :'INR'}}
             </b></h5>
            
             <h6 class="text-danger">
@@ -30,12 +30,14 @@
                 <p *ngIf="!reviewsPresent">No Reviews yet</p>
                 <div *ngIf="reviewsPresent"><h6>Reviews: </h6>
                 <ul>
-                    <li *ngFor="let review of reviews">
-                        <p>{{review.user.firstName}} {{review.user.lastName}}</p>
-                        <p>Rating: {{review.rating}} <i class="fa fa-star" style="font-size:20px"></i></p>
-                        <p>Comment: {{review.review}}</p>
+                    <li *ngFor="let review of reviews" style="list-style: none;">
+                        <p>{{review.rating}} <i class="fa fa-star checked" style="font-size:20px"></i> &nbsp;
+                           <b> {{review.user.firstName}} {{review.user.lastName}}</b></p>
+                        <p>{{review.review}}</p>
+                        <hr>
                     </li>
                 </ul> 
+                
             </div>
         </div>
     </div>

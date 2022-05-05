@@ -22,7 +22,7 @@ export class AuthService {
         this.username = username;
         this.password = password;
         localStorage.setItem('status','loggedin');
-        this.registerSuccessfulLogin(username);
+        this.registerSuccessfulLogin(username,password);
       }));
   }
 
@@ -30,12 +30,14 @@ export class AuthService {
     return 'Basic ' + window.btoa(username + ":" + password);
   }
 
-  registerSuccessfulLogin(username:String) {
+  registerSuccessfulLogin(username:String, password:String) {
     sessionStorage.setItem("authenticatedUser", username.toString());
+    sessionStorage.setItem("authenticatedUserPass",password.toString());
     this.http.get<User>('http://localhost:8080/api/v1/users/username/'+username).
     subscribe((res)=>{
       this.user = res;
       localStorage.setItem("currentUser",JSON.stringify(this.user));
+      console.log(localStorage.getItem("currentUser"));
     });
   }
 
@@ -51,6 +53,7 @@ export class AuthService {
 
   logout() {
     sessionStorage.removeItem("authenticatedUser");
+    sessionStorage.removeItem("authenticatedUserPass");
     localStorage.removeItem("user");
     localStorage.removeItem("status");
     alert("You have logged out.");

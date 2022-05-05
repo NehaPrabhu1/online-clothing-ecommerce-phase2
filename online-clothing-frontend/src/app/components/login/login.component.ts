@@ -25,7 +25,9 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     let path = this.route.snapshot.routeConfig?.path;
-    if(path?.includes("login") && this.loginSuccess == true){
+    if(this.authService.isUserLoggedIn()){
+      this.user = JSON.parse(this.authService.getCurrentUser()!);
+        this.role = this.user.role;
       if(this.role === "user"){
         this.router.navigate(['']);
       }
@@ -43,20 +45,8 @@ export class LoginComponent implements OnInit {
       this.invalidLogin = false;
       this.loginSuccess = true;
       this.successMessage = 'Login Successful';
-      
-      if(this.authService.getCurrentUser() != null){
-        this.user = JSON.parse(this.authService.getCurrentUser()!);
-        this.role = this.user.role;
-      if(this.role === "user"){
-        this.router.navigate(['home']);
-        window.location.reload();
-      }
-      if(this.role === "admin"){
-        this.router.navigate(['admin']);
-        window.location.reload();
-      }
-      }
-      
+      alert("You have logged in successfully");
+      window.location.reload();
       
     }, (error) => {
       console.log(error);

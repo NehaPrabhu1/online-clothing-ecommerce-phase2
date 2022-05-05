@@ -96,8 +96,15 @@
         <form action = "" #productform="ngForm">
           <div class="form-outline">
             <label class="form-label" for="Rating">Rating</label>
-            <input type="number" id="rating" name="rating"
-             class="form-control"[(ngModel)]="review.rating">
+            <select class="form-select" type="number" id="rating" name="rating" [(ngModel)]="review.rating">
+              <option [value]="1">1 - Bad quality product</option>
+              <option [value]="2">2 - Defective product</option>
+              <option [value]="3">3 - Average Product</option>
+              <option [value]="4">4 - Good Product</option>
+              <option [value]="5">5 - Amazing Product</option>
+            </select>
+            <!-- <input type="number" id="rating" name="rating"
+             class="form-control"[(ngModel)]="review.rating"> -->
         </div>
 
         <div class="form-outline">

@@ -2,8 +2,9 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse mr-auto" id="navbarSupportedContent">
+    <div *ngIf="!isAdmin">
     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-
+     
         <li class="nav-item px-3">
             <a class="nav-link" [routerLink]="['/products/page']" [queryParams]="{ pgnum: 0,size:6}" aria-current="page">Apparel</a>
           </li>
@@ -14,12 +15,12 @@
         </a>
         <ul class="dropdown-menu" aria-labelledby="navbarDropdownM">
           <li><p class="text-danger">&nbsp;Men Topwear</p></li>
-          <li><a class="dropdown-item" onclick="window.location.href=this" [routerLink]="['/products/category/',1]">Men Shirt</a></li>
-          <li><a class="dropdown-item" onclick="window.location.href=this" [routerLink]="['/products/category/',2]">Men TShirt</a></li>
+          <li><a class="dropdown-item" [routerLink]="['/products/category/',1]">Men Shirt</a></li>
+          <li><a class="dropdown-item" [routerLink]="['/products/category/',2]">Men TShirt</a></li>
           <li><hr class="dropdown-divider"></li>
           <li><p class="text-danger">&nbsp;Men Bottomwear</p></li>
-          <li><a class="dropdown-item" onclick="window.location.href=this" [routerLink]="['/products/category/',3]">Men Pants</a></li>
-          <li><a class="dropdown-item" onclick="window.location.href=this" [routerLink]="['/products/category/',4]">Men Shorts</a></li>
+          <li><a class="dropdown-item" [routerLink]="['/products/category/',3]">Men Pants</a></li>
+          <li><a class="dropdown-item" [routerLink]="['/products/category/',4]">Men Shorts</a></li>
         </ul>
       </li>
 
@@ -29,12 +30,12 @@
         </a>
         <ul class="dropdown-menu" aria-labelledby="navbarDropdownF">
           <li><p class="text-danger">&nbsp;Women Topwear</p></li>
-          <li><a class="dropdown-item" onclick="window.location.href=this" [routerLink]="['/products/category/',5]">Women Shirt</a></li>
-          <li><a class="dropdown-item" onclick="window.location.href=this" [routerLink]="['/products/category/',6]">Women TShirt</a></li>
+          <li><a class="dropdown-item"  [routerLink]="['/products/category/',5]">Women Shirt</a></li>
+          <li><a class="dropdown-item"  [routerLink]="['/products/category/',6]">Women TShirt</a></li>
           <li><hr class="dropdown-divider"></li>
           <li><p class="text-danger">&nbsp;Women Bottomwear</p></li>
-          <li><a class="dropdown-item" onclick="window.location.href=this" [routerLink]="['/products/category/',7]">Women Pants</a></li>
-          <li><a class="dropdown-item" onclick="window.location.href=this" [routerLink]="['/products/category/',8]">Women Shorts</a></li>
+          <li><a class="dropdown-item"  [routerLink]="['/products/category/',7]">Women Pants</a></li>
+          <li><a class="dropdown-item"  [routerLink]="['/products/category/',8]">Women Shorts</a></li>
         </ul>
       </li>
 
@@ -44,7 +45,7 @@
         </a>
         <ul class="dropdown-menu" aria-labelledby="navbarDropdownB">
           <li *ngFor="let brand of brands">
-            <a class="dropdown-item" onclick="window.location.href=this" [routerLink]="['/products/brand',brand.brandid]">{{brand.brandName}}</a>
+            <a class="dropdown-item"  [routerLink]="['/products/brand',brand.brandid]">{{brand.brandName}}</a>
           </li>
         </ul>
       </li>
@@ -75,11 +76,11 @@
           <li class="nav-link dropdown px-3">
             Welcome, {{name}}
           </li>
-          <li class="nav-item dropdown px-3">
-            <button *ngIf="!islogin" class="btn btn-danger text-white rounded" (click)="login()">Login
-            </button>
-            <button *ngIf="islogin" class="btn btn-danger text-white rounded" (click)="logout()">Logout</button>
-          </li>
+        </ul>
+        </div>
+
+
+         
        <!-- <a *ngIf="islogin" routerLink="/cart">
         <i class = " position-relative fa fa-shopping-cart" aria-hidden="true" style="font-size:30px">
           <span class="cart position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size:16px">
@@ -89,5 +90,26 @@
       </a>
       <a *ngIf="!islogin" class="navbar-brand" [routerLink]="['login']">Login</a>-->
         
-      </ul>
+      
+      <div *ngIf="isAdmin">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item px-3">
+            <a class="nav-link" [routerLink]="['/admin']"  aria-current="page">Dashboard</a>
+          </li>
+  
+          <li class="nav-item px-3">
+            <a class="nav-link" [routerLink]="['/admin/products']"  aria-current="page">Products</a>
+          </li>
+  
+          <li class="nav-item px-3">
+            <a class="nav-link" [routerLink]="['/admin/discount']"  aria-current="page">Discount</a>
+          </li>
+        </ul>
+    </div>
+      <button *ngIf="!islogin" class="btn btn-danger text-white rounded" (click)="login()">Login
+      </button>
+      <button *ngIf="islogin" class="btn btn-danger text-white rounded" (click)="logout()">Logout</button>
+
   </div>
+
+ 

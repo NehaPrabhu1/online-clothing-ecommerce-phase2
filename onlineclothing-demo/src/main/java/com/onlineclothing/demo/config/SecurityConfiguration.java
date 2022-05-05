@@ -38,7 +38,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 	public void configure(WebSecurity web) throws Exception {
 		web.ignoring().antMatchers("/api/v1/brands/**",
 				 "/api/v1/categories/**","/api/v1/products/**","/api/v1/page/products",
-				  "/api/v1/user/**","/api/v1/admin/**");
+				 "/api/v1/admin/**", "/api/v1/user/**");
 	}
 
 	@Override
@@ -48,12 +48,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
         
 		 http.cors();
 		 http.csrf().disable().authorizeRequests()
-		.antMatchers("/api/v1/admin/**").hasRole("ADMIN")
-		.antMatchers("/api/v1/user/**").hasRole("USER")
+		.antMatchers("/api/v1/admin/**").hasAuthority("ROLE_ADMIN")
+		.antMatchers("/api/v1/user/**").hasAuthority("ROLE_USER")
 		.and().httpBasic()
-		//.formLogin().loginPage("/user/login")
-		.and()
-		.logout().permitAll();
+		//.and().logout().permitAll()
+		.and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 		 
 
 //		 http.cors();

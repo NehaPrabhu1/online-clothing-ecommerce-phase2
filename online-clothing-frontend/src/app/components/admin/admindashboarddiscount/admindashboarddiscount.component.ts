@@ -40,7 +40,7 @@ export class AdmindashboarddiscountComponent implements OnInit {
        error=>{
         console.log(error); 
       alert("Discount not added")});
-      window.location.reload();
+      //window.location.reload();
    }
    
  

@@ -21,7 +21,7 @@ import lombok.ToString;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
+//@ToString
 public class Reviews {
 	
 	@Id
@@ -46,5 +46,13 @@ public class Reviews {
 	@ManyToOne
 	@JoinColumn(name="userid",insertable = false, updatable = false)
 	private Users user;
+
+	@Override
+	public String toString() {
+		return "Reviews [reviewid=" + reviewid + ", userid=" + userid + ", orderlineid=" + orderlineid + ", productid="
+				+ productid + ", rating=" + rating + ", review=" + review + "]";
+	}
+	
+	
 	
 }
