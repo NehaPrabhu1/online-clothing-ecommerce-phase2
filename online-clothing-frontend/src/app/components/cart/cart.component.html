@@ -1,0 +1,54 @@
+<h5 class="display-4">Cart</h5>
+    <hr>
+
+<div class="empty" *ngIf="items.length <1">
+    <div class="info">
+        <h4>There are no items in the cart...</h4>
+        <a routerLink="" class="btn btn-success">Start Shopping</a>
+    </div>
+</div>
+
+<ng-container *ngIf="items.length >0">
+<div class="row">
+    <div class="col-9">
+        <br>
+    <div class="d-flex p-2 cart border" *ngFor="let item of items; let i = index">
+    
+        <i class="fa fa-trash text-danger" aria-hidden="true" (click) = "onDelete(i)"></i>
+    
+    <div class="imgBox">
+        <img src="{{item.product.productImage}}"  alt="" class="img border">
+    </div>
+    <div class="name">
+        {{item.product.productName}}
+    </div>
+    <div class="size">
+        {{item.size}}
+    </div>
+    <div class="price">
+        {{item.price | currency:'INR'}}
+    </div>
+    <input type="number" class="quantity" [value]="item.quantity" (blur)="validateInput($event,i)">
+    <div class="total">
+        {{item.price * item.quantity |currency:'INR'}}
+    </div>
+</div>
+</div>
+<div class="col-3">
+    <br>
+    <div class="card">
+        <div><br>Subtotal: 
+            <b>
+                {{subtotal|currency:'INR'}}
+            </b>
+        </div>
+        <div>
+            <hr>
+            <button type="button" class="btn btn-primary btn-sm w-100" (click)="onCheckout()">Check out</button>
+        </div>
+    </div>
+</div>
+</div>
+<br>
+</ng-container>
+

@@ -1,0 +1,124 @@
+<div>
+    <h4 class="display-4">Orders</h4>
+</div>
+<hr>
+<div *ngIf="islogin">
+    <div *ngFor="let order of orders; let i = index;">
+        <div class="d-flex p-2 card border shadow-sm p-3 mb-5 bg-white rounded">
+            <div class="id">
+                <b>Order no.: </b>{{order.orderid}}&nbsp;
+            </div>
+            <div class="date">
+                <b>Date: </b>{{order.dateOfOrder| date : 'mediumDate'}}&nbsp;
+            </div>
+            <div class="amount">
+                <b>Total payment: </b>{{order.totalPayment | currency:'INR'}}
+            </div>
+
+            
+
+            <hr>
+            <div *ngFor="let orderline of orderlines[i]; let i = index">
+            <div class="card mb-3">
+                <div class="row g-0">
+                  <div class="col-md-4">
+                    <img src="{{orderline.product.productImage}}" class="img-fluid rounded-start" alt="img"
+                    style="height:210px;width:175px;">
+                  </div>
+                  <div class="col-md-8">
+                    <div class="card-body">
+                      <p class="card-text"><b>Product name: </b>{{orderline.product.productName}}<br>
+                      <b>Brand name: </b>{{orderline.product.brand.brandName}}<br>
+                       <b>Size: </b>{{orderline.size | uppercase}}<br>
+                       <b>Quantity: </b>{{orderline.quantity}}<br>
+                       <b>Price: </b>{{orderline.price}}</p>
+                       <div *ngIf="orderline.review != null">
+                           <p class="card-text">
+                               <b>Rating: </b>{{orderline.review.rating}}<br>
+                               <b>Review: </b>{{orderline.review.review}}<br>
+                            </p>
+                       </div>
+                       <div *ngIf="orderline.review == null">
+                        <button type="button" class="btn btn-danger text-white" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="onReviewClick(orderline)">Post Review</button>
+                        <!--<button class="btn btn-danger text-white" (click)="onReviewClick(orderline)">Post Review</button>-->
+                    </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+                <hr>
+                <div class="address" *ngIf="deliveryAddress[i] != null">
+                    <div class="d-flex">
+                        <b>Delivery Address: &nbsp;</b>
+                        <address>
+                            {{deliveryAddress[i].addressline}}, {{deliveryAddress[i].street}},
+                             {{deliveryAddress[i].city}}, {{deliveryAddress[i].country}} - {{deliveryAddress[i].pincode}}
+                        </address>
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Product Review</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+        <div class="row">
+          <div class="col">
+            <img src="{{orderline.product?.productImage}}" class="border" style="width:200px; height:200px;">
+        </div>
+        <div class="col">
+            <h6>
+                Color: {{orderline.product?.color}}
+            </h6>
+            <h6>
+                Brand: {{orderline.product?.brand?.brandName}}
+            </h6>
+            <h6>
+                Size: {{orderline.size}}
+            </h6>
+            <h5><b>
+                Price: {{orderline.product?.price | currency :'INR'}}
+            </b></h5>
+           
+            <h6 class="text-danger">
+                Discount: {{orderline.product?.discount}}%
+            </h6>
+        </div>
+        </div>
+        <form action = "" #productform="ngForm">
+          <div class="form-outline">
+            <label class="form-label" for="Rating">Rating</label>
+            <select class="form-select" type="number" id="rating" name="rating" [(ngModel)]="review.rating">
+              <option [value]="1">1 - Bad quality product</option>
+              <option [value]="2">2 - Defective product</option>
+              <option [value]="3">3 - Average Product</option>
+              <option [value]="4">4 - Good Product</option>
+              <option [value]="5">5 - Amazing Product</option>
+            </select>
+            <!-- <input type="number" id="rating" name="rating"
+             class="form-control"[(ngModel)]="review.rating"> -->
+        </div>
+
+        <div class="form-outline">
+            <label class="form-label" for="review">Review</label>
+            <input type="text" id="review" name="review"
+             class="form-control"[(ngModel)]="review.review">
+        </div>
+         </form>
+</div>
+        <div class="modal-footer">
+          <button type="button" id="cancel" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" (click) = "onReviewSubmit()">Add Review</button>
+        </div>
+        </div>
+</div>
+</div>
+

@@ -1,0 +1,42 @@
+
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <div class="card my-3 cardbody-color">
+            <h2 class="text-center text-dark mt-2">User Login</h2>
+          <form class="card-body p-2">
+            <div class="alert alert-warning" *ngIf='invalidLogin'>{{errorMessage}}</div>
+            <div class="alert alert-success" *ngIf='loginSuccess'>{{successMessage}}</div>
+            <div class="text-center">
+              <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png" class="img-fluid profile-image-pic img-thumbnail rounded-circle my-3"
+                width="200px" alt="profile">
+            </div>
+
+            <div class="mb-3 mx-4">
+              <input type="email" class="form-control" id="Useremail" placeholder="User Email" 
+              name="email"
+              [(ngModel)] = "username"
+               required
+               email>
+            </div>
+            
+            <div class="mb-3 mx-4">
+              <input type="password" class="form-control" 
+              id="password" placeholder="Password"
+              name="password"
+              [(ngModel)] ="password"
+              required
+              password>
+            </div>
+            <div class="text-center">
+             <button type="submit" class="btn btn-color px-5 mb-5 w-75" (click)=handleLogin()>Login</button>
+            </div>
+            
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  

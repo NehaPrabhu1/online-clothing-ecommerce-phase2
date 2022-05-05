@@ -1,0 +1,6 @@
+<app-header></app-header>
+<!-- <app-adminheader *ngIf="isAdmin"></app-adminheader> -->
+<div class="container">
+    <router-outlet></router-outlet>
+</div>
+<app-footer *ngIf="!isAdmin"></app-footer>

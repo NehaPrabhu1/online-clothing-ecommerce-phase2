@@ -1,0 +1,115 @@
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse mr-auto" id="navbarSupportedContent">
+    <div *ngIf="!isAdmin">
+    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+     
+        <li class="nav-item px-3">
+            <a class="nav-link" [routerLink]="['/products/page']" [queryParams]="{ pgnum: 0,size:6}" aria-current="page">Apparel</a>
+          </li>
+
+      <li class="nav-item dropdown px-3">
+        <a class="nav-link" href="#" id="navbarDropdownM" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Men
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="navbarDropdownM">
+          <li><p class="text-danger">&nbsp;Men Topwear</p></li>
+          <li><a class="dropdown-item" [routerLink]="['/products/category/',1]">Men Shirt</a></li>
+          <li><a class="dropdown-item" [routerLink]="['/products/category/',2]">Men TShirt</a></li>
+          <li><hr class="dropdown-divider"></li>
+          <li><p class="text-danger">&nbsp;Men Bottomwear</p></li>
+          <li><a class="dropdown-item" [routerLink]="['/products/category/',3]">Men Pants</a></li>
+          <li><a class="dropdown-item" [routerLink]="['/products/category/',4]">Men Shorts</a></li>
+        </ul>
+      </li>
+
+      <li class="nav-item dropdown px-3">
+        <a class="nav-link" href="#" id="navbarDropdownF" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Women
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="navbarDropdownF">
+          <li><p class="text-danger">&nbsp;Women Topwear</p></li>
+          <li><a class="dropdown-item"  [routerLink]="['/products/category/',5]">Women Shirt</a></li>
+          <li><a class="dropdown-item"  [routerLink]="['/products/category/',6]">Women TShirt</a></li>
+          <li><hr class="dropdown-divider"></li>
+          <li><p class="text-danger">&nbsp;Women Bottomwear</p></li>
+          <li><a class="dropdown-item"  [routerLink]="['/products/category/',7]">Women Pants</a></li>
+          <li><a class="dropdown-item"  [routerLink]="['/products/category/',8]">Women Shorts</a></li>
+        </ul>
+      </li>
+
+      <li class="nav-item dropdown px-3">
+        <a class="nav-link" href="#" id="navbarDropdownB" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Brands
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="navbarDropdownB">
+          <li *ngFor="let brand of brands">
+            <a class="dropdown-item"  [routerLink]="['/products/brand',brand.brandid]">{{brand.brandName}}</a>
+          </li>
+        </ul>
+      </li>
+   <li>
+    <form>
+        <div class="input-group input-group-sm">
+          <input name="search" id="search" type="text" class="form-control" placeholder="Search" [(ngModel)]="searchTerm">
+          <div class="input-group-append">
+           <a class="dropdown-item" [routerLink]="['/products/search']" [queryParams]="{q:searchTerm}">
+             <i class="fa fa-search" style="font-size:24px"></i></a>
+          </div>
+        </div>
+      </form>
+    </li>
+    
+        <li class="nav-item px-3">
+            <a class="nav-link" *ngIf="islogin" routerLink="/orders" aria-current="page">Order History</a>
+          </li>
+          <li class="nav-item px-3">
+            <a  routerLink="/cart">
+                <i class = " position-relative fa fa-shopping-cart" aria-hidden="true" style="font-size:30px">
+                  <span class="cart position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size:16px">
+                    {{itemInCart}}
+                  </span>
+                </i>
+              </a>
+          </li>
+          <li class="nav-link dropdown px-3">
+            Welcome, {{name}}
+          </li>
+        </ul>
+        </div>
+
+
+         
+       <!-- <a *ngIf="islogin" routerLink="/cart">
+        <i class = " position-relative fa fa-shopping-cart" aria-hidden="true" style="font-size:30px">
+          <span class="cart position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size:16px">
+            {{itemInCart}}
+          </span>
+        </i>
+      </a>
+      <a *ngIf="!islogin" class="navbar-brand" [routerLink]="['login']">Login</a>-->
+        
+      
+      <div *ngIf="isAdmin">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item px-3">
+            <a class="nav-link" [routerLink]="['/admin']"  aria-current="page">Dashboard</a>
+          </li>
+  
+          <li class="nav-item px-3">
+            <a class="nav-link" [routerLink]="['/admin/products']"  aria-current="page">Products</a>
+          </li>
+  
+          <li class="nav-item px-3">
+            <a class="nav-link" [routerLink]="['/admin/discount']"  aria-current="page">Discount</a>
+          </li>
+        </ul>
+    </div>
+      <button *ngIf="!islogin" class="btn btn-danger text-white rounded" (click)="login()">Login
+      </button>
+      <button *ngIf="islogin" class="btn btn-danger text-white rounded" (click)="logout()">Logout</button>
+
+  </div>
+
+ 

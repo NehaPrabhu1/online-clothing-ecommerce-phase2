@@ -1,0 +1,55 @@
+
+
+<div style="background-color:#fbe6ea; width:100%">
+<div id="carouselExampleControls" class="carousel slide carousel-fade" data-bs-ride="carousel" >
+    <div class="carousel-inner">
+      <div class="carousel-item active" data-bs-interval="2000">
+        <img style="height:350px;" src="https://c4.wallpaperflare.com/wallpaper/306/739/633/women-model-fashion-wallpaper-preview.jpg" class="d-block w-100" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+          <h5 class="display-4 text-dark">Latest Fashion</h5>
+          <p class="text-dark">One Stop Shop for all the fashionalbe clothes.</p>
+        </div>
+      </div>
+      <div class="carousel-item" data-bs-interval="2000">
+        <img style="height:350px;" src="https://media.istockphoto.com/photos/delicate-pink-marble-background-with-gold-brushstrokes-place-for-your-picture-id1143016774?b=1&k=20&m=1143016774&s=170667a&w=0&h=Xc63XTawQvUuKonuCqyJfAdayjuJZSM_anwKn_4hJTI=" class="d-block w-100" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+          <h5 class="display-4 text-dark">Clothing trends</h5>
+        </div>
+      </div>
+      <div class="carousel-item" data-bs-interval="2000">
+        <img style="height:350px;" src="https://media.istockphoto.com/photos/clothing-on-hanger-at-the-trendy-shop-boutique-picture-id929697584?k=20&m=929697584&s=612x612&w=0&h=Vr8hkhgwDq4OCq5Qozg3J02JH4Hq4DzLgApjxlEtnTI=" class="d-block w-100" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+          <h5 class="display-4">Available on single click</h5>
+        </div>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+    <br>
+  </div>
+  <div class="d-flex justify-content-center">
+      <div class="row">
+          <div class="col-6">
+            <div  class="card shadow-sm p-3 mb-5 bg-white rounded" style="width: 500px;">
+                <a [routerLink]="['/products/gender',genderf]">
+                    <img src="assets/images/products/female.jpg"  alt="Women's Fashion" style="width:100%">
+                </a>
+          </div>
+        </div>
+        <div class="col-6">
+            <div  class="card shadow-sm p-3 mb-5 bg-white rounded" style="width: 500px">
+                <a [routerLink]="['/products/gender',genderm]">
+                    <img src="assets/images/products/male.jpg" alt="Men's Fashion" style="width:100%">
+                </a>
+            </div>
+          </div>
+      </div>
+  </div>
+</div>
+

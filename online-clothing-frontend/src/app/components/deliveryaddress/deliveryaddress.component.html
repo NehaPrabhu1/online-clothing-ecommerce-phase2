@@ -1,0 +1,74 @@
+<div class="container py-1">
+    <div class="row d-flex justify-content-center align-items-center">
+      <div class="col">
+        <div class="card my-2 shadow-3" style="box-sizing: content-box;">
+          <div class="row g-0">
+            <div class="col-md-6 d-md-block bg-image">
+              <img src="https://image.shutterstock.com/image-vector/prevention-coronovirus-covid19-delivery-product-600w-1676209411.jpg"
+                alt="Sample photo" class="img-fluid" style="height:100%;width:92%">
+            
+            </div>
+            <div class="col-md-6">
+              <div class="card-body text-black">
+                <h3 class="mb-4 text-uppercase">Delivery Address</h3>
+                <form action="" #addressForm="ngForm">
+                    <div class="form-outline">
+                        <label class="form-label" for="addressline">Address Line</label>
+                      <input type="text" id="addressline" name="addressline"
+                      class="form-control" 
+                      placeholder="Building, Flat No./ House No." [(ngModel)]="deliveryAddress.addressline">
+                    </div>
+                    
+                <div class="form-outline mb-2">
+                    <label class="form-label" for="street">Street</label>
+                  <input type="text" id="street" name ="street"
+                  class="form-control" 
+                  placeholder="Street / Locality" [(ngModel)]="deliveryAddress.street">
+                </div>
+  
+                <div class="row">
+                  <div class="col-md-6 mb-2">
+                        <label for="country">Country</label>
+                        <div class="input-group input-group-m mb-3">
+                            <select class="form-select" [(ngModel)] = "selectedCountry.name" 
+                            (change)="onSelect($event.target)" name="country" [(ngModel)]="deliveryAddress.country">
+                                <option value="0">--Select Country--</option>
+                                <option *ngFor="let country of countries?.countries" [value]="country.name">{{country.name}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-2">
+                        <label for="city">City</label>
+                        <div class="input-group input-group-m mb-3">
+                            <select class="form-select" name="city" [(ngModel)]="deliveryAddress.city">
+                                <option value="0">--Select City--</option>
+                                <option *ngFor="let city of cities" [value]="city.name">{{city.name}}</option>
+                            </select>
+                        </div>
+                  </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mb-2">
+                <div class="form-outline">
+                    <label class="form-label" for="zip">Zip/Pin Code</label>
+                  <input type="text" id="zip" name="zip"
+                  class="form-control" 
+                  placeholder="Zip or Pin code" [(ngModel)]="deliveryAddress.pincode">
+                </div>
+                </div>
+                <div class="col-md-6 mb-2">
+                <div class="d-flex justify-content-end pt-3">
+                  <button class="btn btn-secondary btn-block btn-lg" type="reset">Reset</button>&nbsp;
+                  <button type="submit" class="btn btn-success btn-block btn-lg" (click)="onSubmit()"
+                    style="background-color:hsl(210, 100%, 50%)">Place Order</button>
+                </div>
+                </div>
+                <small class="text-danger">This adress will be used for order delivery.</small>
+              </div>
+            </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

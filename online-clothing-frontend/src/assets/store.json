@@ -1,0 +1,51 @@
+{
+    "countries":[
+        {
+            "name":"India"
+        },
+        {
+            "name":"UK"
+        },
+        {
+            "name":"USA"
+        }
+    ],
+    "cities":[
+        {
+            "name":"Mumbai",
+            "country_name":"India"
+        },
+        {
+            "name":"Delhi",
+            "country_name":"India"
+        },
+        {
+            "name":"Banglore",
+            "country_name":"India"
+        },
+        {
+            "name":"London",
+            "country_name":"UK"
+        },
+        {
+            "name":"Leeds",
+            "country_name":"UK"
+        },
+        {
+            "name":"Manchester",
+            "country_name":"UK"
+        },
+        {
+            "name":"New York",
+            "country_name":"USA"
+        },
+        {
+            "name":"Los Angeles",
+            "country_name":"USA"
+        },
+        {
+            "name":"Chicago",
+            "country_name":"USA"
+        }
+    ]
+}

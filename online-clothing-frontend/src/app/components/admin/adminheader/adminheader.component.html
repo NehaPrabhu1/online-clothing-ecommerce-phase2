@@ -1,0 +1,28 @@
+
+<nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
+
+    <div class="container-fluid">
+        <a class="navbar-brand" [routerLink]="['/admin']"><img src="assets/logo/LOGO.JPG" style="height:50px;width:120px;"></a>
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+
+            <li class="nav-item px-3">
+                <a class="nav-link" [routerLink]="['/admin']"  aria-current="page">Dashboard</a>
+              </li>
+
+              <li class="nav-item px-3">
+                <a class="nav-link" [routerLink]="['/admin/products']"  aria-current="page">Products</a>
+              </li>
+
+              <li class="nav-item px-3">
+                <a class="nav-link" [routerLink]="['/admin/discount']"  aria-current="page">Discount</a>
+              </li>
+
+              <li>
+                <button  class="btn btn-danger text-white rounded" (click)="logout()">Logout</button>
+              </li>
+              </ul>
+
+      </div>
+
+
+</nav>
