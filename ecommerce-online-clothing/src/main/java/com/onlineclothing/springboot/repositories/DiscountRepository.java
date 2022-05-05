@@ -2,6 +2,8 @@ package com.onlineclothing.springboot.repositories;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -15,4 +17,7 @@ public interface DiscountRepository extends JpaRepository<Discount, Integer>{
 	
 	Discount findTop1ByCategoryidAndStatusOrderByDiscountPercentDesc(Integer categoryid, String status);
 //category -> Discount
+	
+	@Transactional
+	public void deleteByDiscountid(int id);
 }

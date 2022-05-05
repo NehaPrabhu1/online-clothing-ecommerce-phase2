@@ -73,5 +73,9 @@ public class DiscountService {
 	public long getDiscountCount() {
 		return discountRepository.count();
 	}
+	
+	public void deleteByDiscountid(int id) {
+		discountRepository.deleteByDiscountid(id);
+	}
 
 }

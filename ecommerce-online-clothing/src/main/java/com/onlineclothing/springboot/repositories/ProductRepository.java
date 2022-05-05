@@ -2,6 +2,8 @@ package com.onlineclothing.springboot.repositories;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -30,11 +32,18 @@ public interface ProductRepository extends JpaRepository<Products, Integer> {
 	
 	@Query(value = "SELECT * FROM products WHERE categoryid = :id", nativeQuery = true)
 	public List<Products> findByCategoryid(@Param("id") int categoryid);
+
+	@Transactional
+	public void deleteByProductid(int id);
+	
+	public Products save(Products product);
 	
 	//public List<Products> findByProductName(String productname, Sort sort);
 	
 	//@Query("SELECT * FROM reviews WHERE productid = ?1")
 	//TODO
+	
+	
 		
 	
 }

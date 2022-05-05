@@ -38,7 +38,7 @@ public class ProductService {
 		// May comment the above lines out so it can be more generic,
 		// e.g. we can get a Page object that only contains search query results
 		int totalPages = page.getTotalPages();
-		while (totalPages <= pageNumber) {
+		if (totalPages <= pageNumber) {
 			pageNumber = totalPages - 1;
 		}
 		pageable = PageRequest.of(pageNumber, pageSize);
@@ -78,7 +78,10 @@ public class ProductService {
 	}
 	
 	public Products save(Products product) {
-		Products savedProduct = productRepository.save(product);
+		Products savedProduct = null;
+		if(product != null) {
+			savedProduct = productRepository.save(product);
+		}
 		return savedProduct;
 	}
 
@@ -98,6 +101,11 @@ public class ProductService {
 			}
 		}
 	}
+<<<<<<< Updated upstream
+=======
+<<<<<<< Updated upstream
+=======
+>>>>>>> Stashed changes
 	
 	//wrote this method to select a product by color
 	public List<Products> getProductsByColor(String color){
@@ -109,5 +117,13 @@ public class ProductService {
 	public long getProductsCount() {
     	return productRepository.count();
     }
+<<<<<<< Updated upstream
+=======
+	
+	public void deleteById(int id) {
+		productRepository.deleteByProductid(id);
+	}
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
 
 }
