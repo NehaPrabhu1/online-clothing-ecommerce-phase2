@@ -101,11 +101,6 @@ public class ProductService {
 			}
 		}
 	}
-<<<<<<< Updated upstream
-=======
-<<<<<<< Updated upstream
-=======
->>>>>>> Stashed changes
 	
 	//wrote this method to select a product by color
 	public List<Products> getProductsByColor(String color){
@@ -117,13 +112,9 @@ public class ProductService {
 	public long getProductsCount() {
     	return productRepository.count();
     }
-<<<<<<< Updated upstream
-=======
 	
 	public void deleteById(int id) {
 		productRepository.deleteByProductid(id);
 	}
->>>>>>> Stashed changes
->>>>>>> Stashed changes
 
 }

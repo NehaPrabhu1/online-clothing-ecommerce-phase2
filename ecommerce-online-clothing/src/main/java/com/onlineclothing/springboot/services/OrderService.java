@@ -21,20 +21,10 @@ public class OrderService {
 
 	// insert order
 	public Orders insertNewOrder(Orders order) {
-<<<<<<< Updated upstream
-=======
-<<<<<<< Updated upstream
-		Orders newOrder = new Orders();
-//		Set<Orderline> orderlines = order.getOrderlines();
-//		if(orderlines!=null) {
-//		
-//		}
-		return newOrder;
-=======
->>>>>>> Stashed changes
 		Orders savedOrder = null;
-		if (order != null)
+		if (order != null) {
 			savedOrder = orderRepository.save(order);
+		}
 		return savedOrder;
 	}
 
@@ -46,11 +36,7 @@ public class OrderService {
 	// get order by orderid
 	public Orders findOrderById(Integer orderid) {
 		Orders order = null;
-<<<<<<< Updated upstream
-		Optional<Orders> optional = orderRepository.findById(orderid);
-=======
 		Optional<Orders> optional = orderRepository.findByOrderid(orderid);
->>>>>>> Stashed changes
 		if (optional.isPresent()) {
 			order = optional.get();
 		}
@@ -90,10 +76,6 @@ public class OrderService {
 			orders = page.getContent();
 		}
 		return orders;
-<<<<<<< Updated upstream
-=======
->>>>>>> Stashed changes
->>>>>>> Stashed changes
 	}
 	
 	 
