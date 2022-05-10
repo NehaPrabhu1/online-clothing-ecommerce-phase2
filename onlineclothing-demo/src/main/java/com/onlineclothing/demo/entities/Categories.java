@@ -42,9 +42,8 @@ public class Categories {
 	@Column(name = "category_name")
 	private String categoryName;
 
-	// @OneToMany(cascade= CascadeType.ALL,fetch = FetchType.EAGER)
 
-	@OneToMany
+	@OneToMany(fetch = FetchType.EAGER)
 	@JsonIgnore
 	@JoinColumn(name = "categoryid")
 	private List<Products> products = new ArrayList<Products>();

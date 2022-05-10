@@ -53,7 +53,7 @@ public class ProductController {
 			}
 		}
 
-		@RequestMapping(path = "products/gender/{gender}", method = RequestMethod.GET, produces = "application/json")
+		@RequestMapping(path = "/products/gender/{gender}", method = RequestMethod.GET, produces = "application/json")
 		public ResponseEntity<List<Products>> getProductsByGender(@PathVariable("gender") String gender) {
 			List<Products> products = productService.getProductsByGender(gender);
 			if (products != null) {
@@ -63,7 +63,7 @@ public class ProductController {
 			}
 		}
 	  
-		@PostMapping("/products") // /admin
+		@PostMapping("/products")
 		public ResponseEntity<Products> save(@RequestBody Products product) {
 			Products save = productService.save(product);
 			return new ResponseEntity<Products>(save, HttpStatus.CREATED);
@@ -80,7 +80,7 @@ public class ProductController {
 		}
 		
 		// Path: http://localhost:8080/api/v1/products/count
-		@GetMapping("products/count")
+		@GetMapping("/products/count")
 	    public long getCount() {
 	    	return productService.getProductsCount();
 	    }

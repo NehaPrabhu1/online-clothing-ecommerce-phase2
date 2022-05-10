@@ -35,12 +35,41 @@ export class AdmindashboardproductComponent implements OnInit {
     });
   }
 
+  validate():boolean{
+   let isValid = true;
+   if(this.product.categoryid == 0 || this.product.categoryid == null){
+     isValid = false;
+   }
+   if(this.product.brandid == 0 || this.product.brandid == null){
+    isValid = false;
+  }
+   if(this.product.productName == null || this.product.productName == ''){
+     isValid = false;
+   }
+   if(this.product.price == null || this.product.price <= 0){
+     isValid = false;
+   }
+   if(this.product.color == null || this.product.color == ''){
+    isValid = false;
+  }
+  if(this.product.productImage == null || this.product.productImage == ''){
+    isValid = false;
+  }
+  return isValid;
+  }
+
   postProductDetails(){
+    let valid = this.validate();
+    if(valid){
     this.productService.postProduct(this.product).subscribe(res =>{
       console.log(res);
       alert("product Added Successfully");
       window.location.reload();
     });
+  }
+  else{
+    alert("Enter proper product details. Do not keep any field empty");
+  }
   }
 
 }

@@ -17,7 +17,7 @@ class UserRepositoryTest {
 		Users user1 = new Users();
 		user1.setEmail("john@abc.com");
 		user1.setFirstName("John");
-		user1.setLastName("Cena");
+		user1.setLastName("Parker");
 		user1.setRole("user");
 		userRepository.save(user1);
 	}

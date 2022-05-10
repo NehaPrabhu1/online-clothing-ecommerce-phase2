@@ -20,14 +20,17 @@ class BrandServiceTest {
 	@Test
 	void testGetProductsByBrand() {
 		int id = 1;
+		//when(brandservice.finprobybarnd()).thenReturn(listofProduts) use mockito
 		List<Products> products = brandService.findProductsByBrand(id);
 		products.forEach(product->System.out.println(product));
+		assertEquals(1, products.get(0).getBrandid());
 	}
 	
 	@Test
 	void testFindAllBrands() {
-		List<Brands> brands = brandService.findAllBrands();
-		System.out.println(brands);
+		List<Brands> allBrands = brandService.findAllBrands();
+		System.out.println(allBrands);
+		assertNotNull(allBrands);
 	}
 
 	@Test 

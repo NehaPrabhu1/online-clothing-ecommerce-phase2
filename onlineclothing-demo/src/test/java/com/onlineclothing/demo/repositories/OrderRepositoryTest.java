@@ -47,21 +47,21 @@ class OrderRepositoryTest {
 	public void testSaveOrder() {
 		Orders order = new Orders();
         order.setUserid(2);
-        order.setTotalPayment(800);
+        order.setTotalPayment(2000);
 
         // create order item 1
         Orderline orderline1 = new Orderline();
         orderline1.setProductid(2);
-        orderline1.setPrice(300);
+        orderline1.setPrice(1000);
         orderline1.setQuantity(1);
         orderline1.setSize("m");
 
         // create order item 2
         Orderline orderline2 = new Orderline();
-        orderline2.setProductid(2);
-        orderline2.setPrice(300);
+        orderline2.setProductid(3);
+        orderline2.setPrice(1000);
         orderline2.setQuantity(1);
-        orderline2.setSize("m");
+        orderline2.setSize("l");
 
         Set<Orderline> orderlines = new HashSet<Orderline>();
         orderlines.add(orderline1);

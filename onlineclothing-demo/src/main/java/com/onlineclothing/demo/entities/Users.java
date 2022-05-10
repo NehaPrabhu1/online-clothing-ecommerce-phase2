@@ -13,6 +13,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -45,6 +47,7 @@ public class Users {
 	private String role;
 	
 	@OneToOne(mappedBy = "user")
+	@JsonIgnore
 	private LoginDetails logindetail;
 
 	@Override
@@ -52,9 +55,6 @@ public class Users {
 		return "Users [userid=" + userid + ", email=" + email + ", firstName=" + firstName + ", lastName=" + lastName
 				+ ", role=" + role + "]";
 	}
-
-//	@OneToMany(cascade= CascadeType.ALL, mappedBy = "user", fetch = FetchType.EAGER)
-//	private List<Orders> orders = new ArrayList<Orders>();
 	
 	
 }

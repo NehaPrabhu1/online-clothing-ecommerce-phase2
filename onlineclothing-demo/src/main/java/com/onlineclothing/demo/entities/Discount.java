@@ -29,22 +29,22 @@ public class Discount {
 	private Integer discountid;
 
 	@Column(name="categoryid")
-	private Integer categoryid; //dropdown <option [value] = category.id>{{category.name}}</option>
+	private Integer categoryid;
 
 	@Column(name="start_date")
-	private LocalDate startDate;//date
+	private LocalDate startDate;
 
 	@Column(name="start_time")
-	private LocalTime startTime;//time
+	private LocalTime startTime;
 
 	@Column(name="end_date")
-	private LocalDate endDate;//date
+	private LocalDate endDate;
 
 	@Column(name="end_time")
-	private LocalTime endTime;//time
+	private LocalTime endTime;
 	
 	@Column(name="discount_percent")
-	private double discountPercent;//number/normal
+	private double discountPercent;
 	
 	private String status;
 

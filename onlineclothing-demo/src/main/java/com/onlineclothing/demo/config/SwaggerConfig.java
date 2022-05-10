@@ -27,7 +27,7 @@ public class SwaggerConfig {
     }
 
 	private ApiInfo getApiInfo() {
-        Contact contact = new Contact("practice", "http://livefashion.com", "livefashion@gmail.com");
+        Contact contact = new Contact("practice", "http://localhost:4200", "livefashion@gmail.com");
         return new ApiInfoBuilder()
                 .title("Ecommerce API")
                 .description("Documentation Ecommerce api")

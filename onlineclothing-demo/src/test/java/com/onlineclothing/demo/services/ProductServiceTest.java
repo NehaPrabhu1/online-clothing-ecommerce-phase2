@@ -7,6 +7,7 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 
 import com.onlineclothing.demo.entities.Brands;
 import com.onlineclothing.demo.entities.Categories;
@@ -14,7 +15,7 @@ import com.onlineclothing.demo.entities.Products;
 import com.onlineclothing.demo.repositories.ProductRepository;
 
 
-
+@SpringBootTest
 class ProductServiceTest {
 
 	@Autowired ProductRepository productRepository;
@@ -30,25 +31,20 @@ class ProductServiceTest {
 	public void getProductsBasedOnPageTest() {
 		List<Products> products = productService.getProductsBasedOnPage(0, 4);
 		assertEquals(4, products.size());
-		assertEquals(1, products.get(0).getProductid());
-		
-		// Checking the conditional 
-	    products = productService.getProductsBasedOnPage(50, 10);
 	}
+	
 	
 	@Test
 	public void getAllProductsTest() {
 		List<Products> products = productService.getAllProducts();
 		System.out.println(products);
-		assertThat(products.size()).isEqualTo(16);
+		assertNotNull(products);
 	}
 	
 	@Test
 	public void searchProductsTest() {
 		List<Products> products = productService.searchProducts("men");
-		assertThat(products.size()).isEqualTo(16);
-		assertEquals(1, products.get(0).getProductid());
-		assertEquals(2, products.get(1).getProductid());
+		System.out.println(products);
 	}
 	
 	@Test
@@ -71,14 +67,11 @@ class ProductServiceTest {
 		product.setProductName("Men blue polo shirt");
 		product.setPrice(500);
 		product.setColor("blue");
-		product.setDiscount(20);
 		product.setProductImage("assets/images/products/img1.jpg");
 		
 		Products retrievedProduct = productService.getProductById(1);
 		assertEquals(product.getProductName(), retrievedProduct.getProductName());
 		assertEquals(product.getPrice(), retrievedProduct.getPrice());
-		assertEquals(product.getDiscount(), retrievedProduct.getDiscount());
-		
 		
 		retrievedProduct = productService.getProductById(10000000);
 		assertThat(retrievedProduct).isNull();
@@ -87,9 +80,22 @@ class ProductServiceTest {
 	@Test
 	public void getProductsByGenderTest() {
 		List<Products> products = productService.getProductsByGender("Men");
-		assertEquals(8, products.size());
-		assertEquals(1, products.get(0).getProductid());
-		assertEquals(3, products.get(1).getProductid());
+		Products product = products.get(0);
+		assertEquals("Men", product.getCategory().getCategoryGender());
+	}
+	
+	@Test
+	void testGetProductsCount() {
+		long productCount = productService.getProductsCount();
+		System.out.println(productCount);
+		assertTrue(productCount>=0);
 	}
 
+	
+	@Test
+	void testGetProductsByColor() {
+		List<Products> products = productService.getProductsByColor("blue");
+		assertNotNull(products);
+		assertEquals("blue", products.get(0).getColor());
+	}
 }

@@ -14,7 +14,7 @@ public class OrderlineController {
 	@Autowired
 	private OrderlineService orderlineService;
 	
-	 @GetMapping("/admin/orderlines/count") // /admin/
+	 @GetMapping("/admin/orderlines/count")
 	    public long getCount() {
 	    	return orderlineService.getOrderlineCount();
 	    }

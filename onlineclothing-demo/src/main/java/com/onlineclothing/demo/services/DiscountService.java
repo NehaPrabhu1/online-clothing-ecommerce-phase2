@@ -36,7 +36,7 @@ public class DiscountService {
 			discount.setStatus("upcoming");
 		} else if (currentTimeStamp.isAfter(endTimeStamp)) {
 			discount.setStatus("expired");
-		} else {
+		} else if(currentTimeStamp.isAfter(startTimeStamp) && currentTimeStamp.isBefore(endTimeStamp)){
 			discount.setStatus("live");
 		}
 	}

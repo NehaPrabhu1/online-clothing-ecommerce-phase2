@@ -48,10 +48,6 @@ public class Orderline {
 
 	private double price;
 
-//	@ManyToOne(cascade = CascadeType.ALL)
-//	@JoinColumn(name = "orderid")
-//	@JsonIgnore
-//	private Orders orderPlaced;
 
 	@OneToOne(cascade=CascadeType.ALL, mappedBy ="orderline")
 	@JoinColumn(name="orderlined",insertable = false, updatable = false)

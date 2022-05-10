@@ -30,5 +30,11 @@ class CategoryRepositoryTest {
 		System.out.println(optional.get());
 	}
 	
+	@Test
+	void testCategoryCount() {
+		long count = categoryRepository.count();
+		System.out.println(count);
+	}
+	
 
 }

@@ -12,9 +12,6 @@ import com.onlineclothing.demo.entities.Products;
 @Repository
 public interface ProductRepository extends JpaRepository<Products, Integer> {
 	
-//	@Query("select productName, b.brandName, price, color, discount from Products p , Brands b where b.brandid = p.brandid")
-	//List<Products> findAllProducts();
-
 	
 	List<Products> findAll();
 	

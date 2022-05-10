@@ -25,6 +25,7 @@ public class UserController {
 	
 	@GetMapping("/login")
 	public Principal login(Principal user) {
+		System.out.println("===>Principal user:"+user);
 		return user;
 	}
 	
@@ -41,7 +42,7 @@ public class UserController {
 		
 	}
     
-    @GetMapping("/admin/users/count") // admin/
+    @GetMapping("/admin/users/count") 
     public long getCount() {
     	return userService.getUsersCount();
     }

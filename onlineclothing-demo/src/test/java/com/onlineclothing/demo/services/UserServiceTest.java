@@ -36,6 +36,7 @@ class UserServiceTest {
 	void testGetAllUsers() {
 		List<Users> users = service.getAllUsers();
 		System.out.println(users);
+		assertTrue(users.size()> 0);
 	}
 	
 	@Test 

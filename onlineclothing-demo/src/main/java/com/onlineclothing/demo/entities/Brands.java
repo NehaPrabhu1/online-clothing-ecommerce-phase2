@@ -37,7 +37,6 @@ public class Brands {
 	@Column(name = "brand_name")
 	private String brandName;
 
-	// @OneToMany(cascade= CascadeType.ALL,fetch = FetchType.EAGER)
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JsonIgnore

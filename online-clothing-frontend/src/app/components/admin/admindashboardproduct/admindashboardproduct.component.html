@@ -56,8 +56,8 @@
                     <label class= "form-label" for="category">Category</label>
                     <div class="input-group input-group-m mb-3">
                         <select class="form-select" name="category" [(ngModel)]="product.categoryid">
-                            <option value="0">--Select Category--</option>
-                            <option *ngFor="let category of categories" [value]="category.categoryid">{{category.categoryGender}} {{category.categoryName}}</option>
+                            <option value=0>--Select Category--</option>
+                            <option *ngFor="let category of categories" [value]=category.categoryid>{{category.categoryGender}} {{category.categoryName}}</option>
                         </select>
                     </div>
                 </div>
@@ -66,8 +66,8 @@
                     <label class= "form-label" for="brand">Brand</label>
                     <div class="input-group input-group-m mb-3">
                         <select class="form-select" name="brand" [(ngModel)]="product.brandid">
-                            <option value="0">--Select Brand--</option>
-                            <option *ngFor="let brand of brands" [value]="brand.brandid">{{brand.brandName}}</option>
+                            <option value=0>--Select Brand--</option>
+                            <option *ngFor="let brand of brands" [value]=brand.brandid>{{brand.brandName}}</option>
                         </select>
                     </div>
                 </div>

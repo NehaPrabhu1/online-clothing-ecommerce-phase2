@@ -32,7 +32,27 @@ export class AdmindashboarddiscountComponent implements OnInit {
    ()=>{});
   }
 
+  validate():boolean{
+    let isValid = true;
+    if(this.discount.categoryid == 0 || this.discount.categoryid == null){
+      isValid = false;
+    }
+    if(this.discount.startDate == null || this.discount.startTime == null){
+      isValid = false;
+    }
+    if(this.discount.endDate == null || this.discount.endTime == null){
+      isValid = false;
+    }
+    if(this.discount.discountPercent == null || this.discount.discountPercent <= 0){
+      isValid = false;
+    }
+    
+   return isValid;
+   }
+
   postDiscountDetails(){
+    let valid = this.validate();
+    if(valid){
     console.log(this.discount);
      this.api.postDiscount(this.discount).subscribe(res=>{
         console.log(res)
@@ -40,7 +60,11 @@ export class AdmindashboarddiscountComponent implements OnInit {
        error=>{
         console.log(error); 
       alert("Discount not added")});
-      //window.location.reload();
+      window.location.reload();
+       }
+       else{
+        alert("Enter proper product details. Do not keep any field empty");
+       }
    }
    
  

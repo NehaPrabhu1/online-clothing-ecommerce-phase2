@@ -1,5 +1,6 @@
 package com.onlineclothing.demo.repositories;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.List;
@@ -28,4 +29,31 @@ class ProductRepositoryTest {
 		products.forEach(product -> System.out.println(product));
 	}
 
+	@Test
+	public void repositoryNotEmptyTest() {
+		List<Products> products = productRepository.findAll();
+		assertThat(products).isNotEmpty();
+	}
+
+	@Test
+	public void findAllByNameTest() {
+		List<Products> products = productRepository.findAllByName("Women");
+		System.out.println(products);
+		assertNotNull(products);
+	}
+	
+	@Test
+	public void findAllTest() {
+		List<Products> products = productRepository.findAll();
+		System.out.println(products);
+		
+	}
+	
+	@Test
+	public void findAllByGenderTest() 
+	{
+		List<Products> products = productRepository.findAllByGender("Men");
+		assertEquals("Men",products.get(0).getCategory().getCategoryGender());
+	}
+	
 }

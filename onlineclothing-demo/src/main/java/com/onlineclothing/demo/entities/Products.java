@@ -46,16 +46,16 @@ public class Products {
 	private Integer brandid;
 	
 	@Column(name="product_name")
-	private String productName; //text
+	private String productName; 
 	
-	private double price;//text
+	private double price;
 	
-	private String color;//text
+	private String color;
 	
 	private double discount;
 	
 	@Column(name = "product_image")
-	private String productImage;//text or file
+	private String productImage;
 	
 	@OneToMany
 	@JoinColumn(name="productid",insertable = false, updatable = false)

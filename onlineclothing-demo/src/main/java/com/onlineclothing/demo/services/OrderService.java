@@ -51,7 +51,7 @@ public class OrderService {
 	}
 
 	// get orders of particular user and sort in desc order of their placement
-	public List<Orders> findOrdersOfUserAndApplySortingAndPaging(Integer userid) {
+	public List<Orders> findOrdersOfUserAndApplySorting(Integer userid) {
 
 		Sort newSort = Sort.by(new Sort.Order(Direction.DESC, "dateOfOrder"), 
 						new Sort.Order(Direction.DESC, "timeOfOrder"));
